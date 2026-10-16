@@ -1,0 +1,139 @@
+"use client";
+
+import React, { useState } from "react";
+import { Building2, Copy, Check, ShieldCheck, AlertCircle } from "lucide-react";
+import { SELLER_CONFIG } from "@/config/seller";
+
+interface BankDetailsCardProps {
+  orderNumber: string;
+}
+
+export function BankDetailsCard({ orderNumber }: BankDetailsCardProps) {
+  const [copiedField, setCopiedField] = useState<string | null>(null);
+
+  const copyToClipboard = (text: string, fieldName: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedField(fieldName);
+    setTimeout(() => {
+      setCopiedField(null);
+    }, 2500);
+  };
+
+  const handleCopyAll = () => {
+    const fullText = `GTStyle Official Bank Account Details:\nBank: ${SELLER_CONFIG.bankDetails.bankName}\nAccount Name: ${SELLER_CONFIG.bankDetails.accountName}\nAccount Number: ${SELLER_CONFIG.bankDetails.accountNumber}\nTransfer Reference/Narration: ${orderNumber}`;
+    copyToClipboard(fullText, "all");
+  };
+
+  return (
+    <div className="border border-champagne/40 bg-neutral-950 p-6 sm:p-8 rounded-lg space-y-6 text-alabaster shadow-2xl">
+      {/* Header */}
+      <div className="flex items-start justify-between flex-wrap gap-4 border-b border-neutral-800 pb-5">
+        <div className="flex items-center space-x-3">
+          <div className="p-2.5 rounded-sm bg-champagne/10 border border-champagne/30 text-champagne">
+            <Building2 className="w-5 h-5" />
+          </div>
+          <div>
+            <h3 className="font-serif text-xl sm:text-2xl text-alabaster tracking-wide font-medium">
+              Official Atelier Bank Details
+            </h3>
+            <p className="text-xs text-neutral-400 font-sans mt-0.5">
+              Direct Corporate Transfer • Guaranty Trust Bank
+            </p>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          onClick={handleCopyAll}
+          className="inline-flex items-center space-x-1.5 px-3 py-1.5 bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 hover:border-champagne text-champagne text-xs uppercase tracking-wider rounded-sm transition-colors"
+        >
+          {copiedField === "all" ? (
+            <>
+              <Check className="w-3.5 h-3.5 text-emerald-400" />
+              <span className="text-emerald-400">All Details Copied</span>
+            </>
+          ) : (
+            <>
+              <Copy className="w-3.5 h-3.5" />
+              <span>Copy All Details</span>
+            </>
+          )}
+        </button>
+      </div>
+
+      {/* Account Details Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {/* Bank Name */}
+        <div className="p-4 bg-neutral-900/60 border border-neutral-800/80 rounded-sm space-y-1">
+          <span className="text-[10px] uppercase tracking-widest text-neutral-500 font-sans block">
+            Bank Name
+          </span>
+          <span className="text-sm font-medium text-alabaster block">
+            {SELLER_CONFIG.bankDetails.bankName}
+          </span>
+        </div>
+
+        {/* Account Name */}
+        <div className="p-4 bg-neutral-900/60 border border-neutral-800/80 rounded-sm space-y-1">
+          <span className="text-[10px] uppercase tracking-widest text-neutral-500 font-sans block">
+            Account Name
+          </span>
+          <span className="text-sm font-medium text-alabaster block">
+            {SELLER_CONFIG.bankDetails.accountName}
+          </span>
+        </div>
+
+        {/* Account Number with Quick Copy */}
+        <div className="p-4 bg-neutral-900/90 border border-champagne/40 rounded-sm flex items-center justify-between">
+          <div className="space-y-0.5">
+            <span className="text-[10px] uppercase tracking-widest text-champagne font-sans block">
+              NUBAN Account Number
+            </span>
+            <span className="font-mono text-lg font-bold text-champagne-light tracking-wider">
+              {SELLER_CONFIG.bankDetails.accountNumber}
+            </span>
+          </div>
+
+          <button
+            type="button"
+            onClick={() =>
+              copyToClipboard(SELLER_CONFIG.bankDetails.accountNumber, "accountNumber")
+            }
+            className="p-2 bg-neutral-800 hover:bg-neutral-700 text-neutral-300 hover:text-champagne rounded-sm transition-colors"
+            title="Copy Account Number"
+            aria-label="Copy Account Number"
+          >
+            {copiedField === "accountNumber" ? (
+              <Check className="w-4 h-4 text-emerald-400" />
+            ) : (
+              <Copy className="w-4 h-4" />
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* Mandatory Narration Notice */}
+      <div className="p-4 bg-champagne/10 border border-champagne/30 rounded-sm space-y-2">
+        <div className="flex items-center space-x-2 text-champagne text-xs font-semibold tracking-wide uppercase">
+          <AlertCircle className="w-4 h-4 flex-shrink-0" />
+          <span>Mandatory Transfer Reference Instruction</span>
+        </div>
+        <p className="text-xs text-neutral-300 leading-relaxed">
+          Please input your official Order Number{" "}
+          <strong className="text-champagne font-mono font-bold px-1.5 py-0.5 bg-obsidian rounded-sm border border-champagne/40">
+            {orderNumber}
+          </strong>{" "}
+          into the <em>&quot;Payment Description / Reference / Narration&quot;</em> field on your mobile banking app.
+          This enables our accounting desk to reconcile your transfer and issue benchwork authorization immediately.
+        </p>
+      </div>
+
+      <div className="flex items-center space-x-2 text-[11px] text-neutral-400 pt-1">
+        <ShieldCheck className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+        <span>Official verified corporate account of GTStyle Luxury Atelier Ltd.</span>
+      </div>
+    </div>
+  );
+}
+
+export default BankDetailsCard;

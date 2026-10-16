@@ -1,0 +1,20 @@
+skills:
+  - id: "luxury-ecommerce-ui"
+    description: "Builds high-end, editorial storefront components with warm metallic accents, fluid typography, subtle micro-interactions, and accessible modal drawers."
+    applies_to: ["components/product/*", "components/cart/*", "components/layout/*", "app/page.tsx", "app/shop/*"]
+
+  - id: "nextjs-server-actions-expert"
+    description: "Constructs type-safe, validated Server Actions with zero client-side financial calculations, utilizing Prisma transactions and optimistic UI conventions."
+    applies_to: ["actions/*", "app/checkout/*"]
+
+  - id: "concierge-order-orchestration"
+    description: "Implements the manual order placement lifecycle, including pre-formatted WhatsApp deep-linking, bank clipboard copying, and delivery date validation."
+    applies_to: ["app/checkout/*", "app/order-success/*", "config/seller.ts"]
+
+  - id: "prisma-schema-architect"
+    description: "Designs, migrates, and optimizes PostgreSQL relational schemas for luxury jewelry variants, ring dimensions, gemstone certifications, and order snapshots."
+    applies_to: ["prisma/schema.prisma", "prisma/seed.ts"]
+
+  - id: "rbac-and-security-enforcer"
+    description: "Guards administrative atelier routes via Next.js Middleware, enforces IDOR prevention on order receipts, and protects database mutations from race conditions."
+    applies_to: ["middleware.ts", "app/admin/*", "lib/auth.ts"]

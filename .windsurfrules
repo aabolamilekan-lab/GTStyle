@@ -1,0 +1,12 @@
+# GTStyle Operational Rules
+
+1. Zero Payment Gateways: Never install, import, or configure Stripe, Flutterwave, Paystack, PayPal, or any card processing SDK. All purchases are finalized via direct bank transfers confirmed through administrative or concierge channels.
+2. Component Modularity: Deconstruct UIs into single-responsibility components:
+   - components/ui/ for buttons, inputs, modals, badges.
+   - components/product/ for galleries, configurators, ring sizers, and spec accordions.
+   - components/cart/ for slide-over velvet drawers and item rows.
+   - components/admin/ for order cards, variant matrices, and certificate managers.
+3. Strict TypeScript: "strict": true is non-negotiable. Every database model, server action parameter, component prop, and state slice must be bound to an explicit interface or Zod-inferred type. Zero use of 'any'.
+4. Optimistic Updates: Cart drawers and wishlist toggles must react immediately using optimistic state updates, syncing with local storage via Zustand without blocking on network round-trips.
+5. Layout Stability: Every image must use Next.js <Image> with explicit dimensions, aspect-ratio containers, and blur placeholders (CLS < 0.05).
+6. Input Sanitization: Inputs for engravingText, orderNotes, and customer fields must be validated via Zod and sanitized to prevent XSS.

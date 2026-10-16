@@ -1,0 +1,268 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  CUSTOMER
+  ADMIN
+}
+
+enum MetalType {
+  YELLOW_GOLD_14K
+  YELLOW_GOLD_18K
+  WHITE_GOLD_14K
+  WHITE_GOLD_18K
+  ROSE_GOLD_14K
+  ROSE_GOLD_18K
+  PLATINUM_950
+  STERLING_SILVER_925
+}
+
+enum GemstoneType {
+  DIAMOND_NATURAL
+  DIAMOND_LAB_GROWN
+  SAPPHIRE
+  EMERALD
+  RUBY
+  PEARL
+  NONE
+}
+
+enum DiamondClarity {
+  FL
+  IF
+  VVS1
+  VVS2
+  VS1
+  VS2
+  SI1
+  SI2
+}
+
+enum DiamondColor {
+  D
+  E
+  F
+  G
+  H
+  I
+  J
+}
+
+enum DiamondCut {
+  EXCELLENT
+  VERY_GOOD
+  GOOD
+  FAIR
+}
+
+enum OrderStatus {
+  AWAITING_PAYMENT
+  PAYMENT_CONFIRMED
+  CRAFTING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String?
+  name         String?
+  phone        String?
+  role         Role      @default(CUSTOMER)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  addresses    Address[]
+  orders       Order[]
+
+  @@map("users")
+}
+
+model Address {
+  id        String   @id @default(cuid())
+  userId    String?
+  recipient String
+  phone     String
+  line1     String
+  line2     String?
+  city      String
+  state     String
+  country   String   @default("Nigeria")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  orders    Order[]
+
+  @@map("addresses")
+}
+
+model Category {
+  id          String    @id @default(cuid())
+  name        String    @unique
+  slug        String    @unique
+  description String?
+  imageUrl    String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  products    Product[]
+
+  @@map("categories")
+}
+
+model Collection {
+  id          String    @id @default(cuid())
+  name        String    @unique
+  slug        String    @unique
+  description String?
+  bannerUrl   String?
+  isFeatured  Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  products    Product[]
+
+  @@map("collections")
+}
+
+model Product {
+  id                    String            @id @default(cuid())
+  name                  String
+  slug                  String            @unique
+  description           String            @db.Text
+  storyHtml             String?           @db.Text
+  basePriceCents        Int               // Base price in integer kobo (divide by 100 for NGN)
+  isPublished           Boolean           @default(true)
+  isFeatured            Boolean           @default(false)
+  allowsCustomEngraving Boolean           @default(false)
+  maxEngravingLength    Int?              @default(25)
+
+  categoryId            String
+  category              Category          @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  collectionId          String?
+  collection            Collection?       @relation(fields: [collectionId], references: [id], onDelete: SetNull)
+
+  variants              ProductVariant[]
+  images                ProductImage[]
+  specifications        ProductGemstone?
+
+  createdAt             DateTime          @default(now())
+  updatedAt             DateTime          @updatedAt
+
+  @@index([categoryId])
+  @@index([collectionId])
+  @@index([slug])
+  @@map("products")
+}
+
+model ProductImage {
+  id        String   @id @default(cuid())
+  productId String
+  url       String
+  blurHash  String?
+  altText   String
+  sortOrder Int      @default(0)
+  isHero    Boolean  @default(false)
+
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([productId])
+  @@map("product_images")
+}
+
+model ProductGemstone {
+  id                String          @id @default(cuid())
+  productId         String          @unique
+  gemstoneType      GemstoneType    @default(NONE)
+  caratTotalWeight  Decimal?        @db.Decimal(4, 2)
+  cut               DiamondCut?
+  color             DiamondColor?
+  clarity           DiamondClarity?
+  certificateAgency String?
+  certificateNumber String?
+
+  product           Product         @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@map("product_gemstones")
+}
+
+model ProductVariant {
+  id            String         @id @default(cuid())
+  productId     String
+  sku           String         @unique
+  metalType     MetalType
+  ringSize      Decimal?       @db.Decimal(3, 1)
+  priceCents    Int            // Stored in kobo (e.g. 450000000 kobo = 4,500,000 NGN)
+  stockQuantity Int            @default(1)
+  isActive      Boolean        @default(true)
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+
+  product       Product        @relation(fields: [productId], references: [id], onDelete: Cascade)
+  orderItems    OrderItem[]
+
+  @@unique([productId, metalType, ringSize], name: "unique_product_variant_spec")
+  @@index([productId])
+  @@index([sku])
+  @@map("product_variants")
+}
+
+model Order {
+  id                   String      @id @default(cuid())
+  orderNumber          String      @unique // e.g. GTS-2026-98124
+  customerName         String
+  customerPhone        String
+  customerEmail        String
+  deliveryAddressId    String
+  requiredDeliveryDate DateTime
+  orderNotes           String?     @db.VarChar(500)
+
+  subtotalCents        Int
+  shippingCents        Int         @default(0)
+  totalCents           Int
+
+  status               OrderStatus @default(AWAITING_PAYMENT)
+  paymentProofUrl      String?
+
+  createdAt            DateTime    @default(now())
+  updatedAt            DateTime    @updatedAt
+
+  deliveryAddress      Address     @relation(fields: [deliveryAddressId], references: [id], onDelete: Restrict)
+  items                OrderItem[]
+  user                 User?       @relation(fields: [userId], references: [id], onDelete: SetNull)
+  userId               String?
+
+  @@index([orderNumber])
+  @@index([customerPhone])
+  @@map("orders")
+}
+
+model OrderItem {
+  id                  String         @id @default(cuid())
+  orderId             String
+  variantId           String
+  quantity            Int            @default(1)
+  unitPriceCents      Int
+  totalPriceCents     Int
+
+  productNameSnapshot String
+  metalTypeSnapshot   MetalType
+  ringSizeSnapshot    Decimal?       @db.Decimal(3, 1)
+  skuSnapshot         String
+  engravingText       String?        @db.VarChar(25)
+
+  order               Order          @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  variant             ProductVariant @relation(fields: [variantId], references: [id], onDelete: Restrict)
+
+  @@index([orderId])
+  @@map("order_items")
+}
