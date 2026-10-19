@@ -16,8 +16,28 @@ interface ShopPageProps {
   }>;
 }
 
+const CATEGORY_SLUG_ALIAS: Record<string, string> = {
+  watch: "watches",
+  watches: "watches",
+  necklace: "necklaces",
+  necklaces: "necklaces",
+  "bespoke-pendants": "necklaces",
+  bracelet: "bracelets",
+  bracelets: "bracelets",
+  "tennis-bracelets": "bracelets",
+  ring: "rings",
+  rings: "rings",
+  "rings-solitaires": "rings",
+  earring: "earrings",
+  earrings: "earrings",
+};
+
 export default async function ShopPage({ searchParams }: ShopPageProps) {
   const { category, collection, metal, minPrice, maxPrice, sort } = await searchParams;
+
+  const normalizedCategory = category
+    ? CATEGORY_SLUG_ALIAS[category.toLowerCase()] || category
+    : undefined;
 
   const minPriceCents = minPrice ? parseInt(minPrice, 10) : undefined;
   const maxPriceCents = maxPrice ? parseInt(maxPrice, 10) : undefined;
@@ -27,8 +47,8 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
     isPublished: true,
   };
 
-  if (category) {
-    where.category = { slug: category };
+  if (normalizedCategory) {
+    where.category = { slug: normalizedCategory };
   }
 
   if (collection) {
@@ -86,7 +106,7 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
       select: { id: true, name: true, slug: true },
       orderBy: { name: "asc" },
     }),
-    category ? prisma.category.findUnique({ where: { slug: category } }) : null,
+    normalizedCategory ? prisma.category.findUnique({ where: { slug: normalizedCategory } }) : null,
     collection ? prisma.collection.findUnique({ where: { slug: collection } }) : null,
   ]);
 

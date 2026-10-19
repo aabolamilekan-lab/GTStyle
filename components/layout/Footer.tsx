@@ -26,24 +26,24 @@ export function Footer() {
 
   const trustHighlights = [
     {
-      icon: Gem,
-      title: "Ethical Diamond Sourcing",
-      subtitle: "GIA & IGI Certified Natural & Lab Stones",
+      icon: Award,
+      title: "Quality Guaranteed",
+      subtitle: "Well-made pieces that shine and last.",
     },
     {
       icon: ShieldCheck,
-      title: "Direct Bank Transfer",
-      subtitle: "Zero Card Gateways • Verified Concierge Settlement",
+      title: "Easy Payment",
+      subtitle: "Pay directly to our business account. Simple and secure.",
     },
     {
       icon: Truck,
-      title: "Armored Insured Courier",
-      subtitle: "Secure Nationwide Door-to-Door Delivery",
+      title: "Fast Delivery",
+      subtitle: "We deliver fast and safe to anywhere in Nigeria.",
     },
     {
-      icon: Award,
-      title: "Atelier Lifetime Warranty",
-      subtitle: "Annual Inspection & Ultrasonic Cleaning",
+      icon: MessageCircle,
+      title: "We Care For You",
+      subtitle: "Need help after buying? Chat us on WhatsApp anytime.",
     },
   ];
 
@@ -89,94 +89,106 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-xs text-neutral-400 leading-relaxed">
-              Hand-forged fine jewelry born in Lagos, Nigeria. We unite ancient African regal heritage with European micro-pavé mastercraft. Every diamond is GIA/IGI verified, cast strictly in recycled 18k solid gold alloys and platinum.
+              Affordable luxury jewelry in Lagos, Nigeria.
+              <br />
+              We Sell beautiful pieces that make you shine.
             </p>
           </div>
 
-          {/* Col 2: Atelier Navigation */}
+          {/* Col 2: Shop Navigation */}
           <div>
             <h4 className="font-serif text-sm uppercase tracking-widest text-alabaster mb-4">
-              Collections & Atelier
+              SHOP
             </h4>
             <ul className="space-y-2.5 text-xs text-neutral-400">
               <li>
-                <Link href="/shop?category=rings-solitaires" className="hover:text-champagne transition-colors">
-                  Sovereign Solitaires
+                <Link href="/shop?category=rings" className="hover:text-champagne transition-colors">
+                  Rings
                 </Link>
               </li>
               <li>
-                <Link href="/shop?category=tennis-bracelets" className="hover:text-champagne transition-colors">
-                  Celestia Tennis Bracelets
+                <Link href="/shop?category=necklaces" className="hover:text-champagne transition-colors">
+                  Necklaces
                 </Link>
               </li>
               <li>
-                <Link href="/shop?category=bespoke-pendants" className="hover:text-champagne transition-colors">
-                  Art Deco Gemstone Pendants
+                <Link href="/shop?category=bracelets" className="hover:text-champagne transition-colors">
+                  Bracelets
+                </Link>
+              </li>
+              <li>
+                <Link href="/shop?category=earrings" className="hover:text-champagne transition-colors">
+                  Earrings
+                </Link>
+              </li>
+              <li>
+                <Link href="/shop?category=watches" className="hover:text-champagne transition-colors">
+                  Watches
                 </Link>
               </li>
               <li>
                 <Link href="/shop" className="hover:text-champagne transition-colors">
-                  Bespoke Ring Sizer & Guide
-                </Link>
-              </li>
-              <li>
-                <Link href="/shop" className="hover:text-champagne transition-colors">
-                  Complete High Jewelry Vault
+                  Size Guide
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Col 3: Direct Concierge Details */}
+          {/* Col 3: Direct Contact Details */}
           <div>
             <h4 className="font-serif text-sm uppercase tracking-widest text-alabaster mb-4">
-              Atelier Concierge
+              CONTACT US
             </h4>
             <ul className="space-y-3 text-xs text-neutral-400">
               <li className="flex items-center space-x-2.5">
                 <Phone className="w-4 h-4 text-champagne flex-shrink-0" />
+                <span>Phone:</span>
                 <a href={`tel:${SELLER_CONFIG.phone}`} className="hover:text-champagne transition-colors font-mono">
                   {SELLER_CONFIG.phone}
                 </a>
               </li>
               <li className="flex items-center space-x-2.5">
                 <MessageCircle className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                <span>WhatsApp:</span>
                 <a
                   href={`https://wa.me/${SELLER_CONFIG.whatsappNumber}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-emerald-400 transition-colors"
                 >
-                  WhatsApp Studio Line
+                  Chat With Us
                 </a>
               </li>
               <li className="flex items-center space-x-2.5">
                 <Mail className="w-4 h-4 text-champagne flex-shrink-0" />
-                <a href={`mailto:${SELLER_CONFIG.email}`} className="hover:text-champagne transition-colors font-mono">
+                <span>Email:</span>
+                <a href={`mailto:${SELLER_CONFIG.email}`} className="hover:text-champagne transition-colors">
                   {SELLER_CONFIG.email}
                 </a>
               </li>
-              <li className="pt-2 text-[11px] leading-relaxed text-neutral-500 border-t border-neutral-900">
-                <span className="text-neutral-300 font-medium block mb-0.5">Private Viewing Salon:</span>
-                Victoria Island, Lagos • By Appointment Only
-                <br />
-                Mon – Sat: 10:00 AM – 6:00 PM WAT
+              <li className="pt-2 text-xs leading-relaxed text-neutral-400 border-t border-neutral-900 space-y-1">
+                <p>
+                  <span className="text-neutral-300">Location:</span> Lagos, Nigeria
+                </p>
+                <p>
+                  Mon - Sat: 10AM - 6PM
+                </p>
               </li>
             </ul>
           </div>
 
-          {/* Col 4: Private Vault Newsletter */}
+          {/* Col 4: Newsletter */}
           <div>
             <h4 className="font-serif text-sm uppercase tracking-widest text-alabaster mb-4">
-              Private Vault Access
+              JOIN OUR LIST
             </h4>
             <p className="text-xs text-neutral-400 mb-4 leading-relaxed">
-              Receive private invitations to confidential diamond acquisitions, one-of-a-kind bespoke unveilings, and atelier previews.
+              Get updates on new designs and discounts.
             </p>
             {isSubscribed ? (
               <div className="flex items-center space-x-2 text-xs text-champagne bg-champagne/10 border border-champagne/30 p-3 rounded-sm">
                 <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
-                <span>You are on the VIP Salon guest list.</span>
+                <span>You are on our list!</span>
               </div>
             ) : (
               <form onSubmit={handleSubscribe} className="space-y-2">

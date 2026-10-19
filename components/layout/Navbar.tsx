@@ -23,10 +23,10 @@ export function Navbar() {
   const displayCount = isHydrated ? totalItemCount : 0;
 
   const navLinks = [
-    { label: "Solitaires", href: "/shop?category=rings-solitaires" },
-    { label: "Tennis Bracelets", href: "/shop?category=tennis-bracelets" },
-    { label: "Pendants", href: "/shop?category=bespoke-pendants" },
-    { label: "Atelier", href: "/shop" },
+    { label: "WATCH", href: "/shop?category=watches" },
+    { label: "NECKLACE", href: "/shop?category=necklaces" },
+    { label: "BRACELET", href: "/shop?category=bracelets" },
+    { label: "RINGS", href: "/shop?category=rings" },
   ];
 
   // Automatically close mobile menu when pathname changes
@@ -101,12 +101,12 @@ export function Navbar() {
               <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
             </a>
 
-            {/* Velvet Bag Button */}
+            {/* Shopping Cart Button */}
             <button
               type="button"
               onClick={openCart}
               className="relative p-1.5 sm:p-2 text-alabaster hover:text-champagne transition-colors duration-200 flex items-center"
-              aria-label="Open Velvet Bag"
+              aria-label="Open Cart"
             >
               <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5" />
               {displayCount > 0 && (

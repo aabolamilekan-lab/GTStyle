@@ -59,6 +59,7 @@ export function ProductConfigurator({ product, variants }: ProductConfiguratorPr
   const openCart = useCartStore((state) => state.openCart);
 
   const isRing =
+    product.category.slug === "rings" ||
     product.category.slug === "rings-solitaires" ||
     product.name.toLowerCase().includes("ring") ||
     product.name.toLowerCase().includes("band");

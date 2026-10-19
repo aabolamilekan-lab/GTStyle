@@ -57,23 +57,23 @@ export function CartDrawer() {
             className="relative z-10 w-full max-w-md bg-obsidian border-l border-neutral-800 text-alabaster shadow-2xl flex flex-col h-full"
             role="dialog"
             aria-modal="true"
-            aria-label="Your Velvet Box"
+            aria-label="My Cart"
           >
             {/* Drawer Header */}
             <div className="flex items-center justify-between px-4 sm:px-6 py-4 sm:py-5 border-b border-neutral-800/80 bg-neutral-950/60">
               <div className="flex items-baseline space-x-2">
                 <h2 className="font-serif text-lg sm:text-2xl tracking-wide text-champagne font-semibold">
-                  Your Velvet Box
+                  My Cart
                 </h2>
                 <span className="text-[11px] sm:text-xs text-neutral-400 font-sans tracking-widest uppercase">
-                  ({totalItemCount} {totalItemCount === 1 ? "Piece" : "Pieces"})
+                  ({totalItemCount} {totalItemCount === 1 ? "Item" : "Items"})
                 </span>
               </div>
               <button
                 type="button"
                 onClick={closeCart}
                 className="p-1.5 text-neutral-400 hover:text-champagne transition-colors rounded-full hover:bg-neutral-900"
-                aria-label="Close Velvet Box"
+                aria-label="Close Cart"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -88,10 +88,10 @@ export function CartDrawer() {
                   </div>
                   <div className="space-y-1">
                     <p className="font-serif text-lg tracking-wide text-neutral-200">
-                      Your velvet box is empty
+                      Your cart is empty.
                     </p>
                     <p className="text-xs text-neutral-400 max-w-xs leading-relaxed">
-                      Curate mastercrafted solitaires, certified diamonds, and bespoke jewelry for your personal collection.
+                      Explore our watches, necklaces, bracelets, and rings collection.
                     </p>
                   </div>
                   <Link
@@ -99,7 +99,7 @@ export function CartDrawer() {
                     onClick={closeCart}
                     className="mt-2 inline-flex items-center space-x-2 px-6 py-3 text-xs uppercase tracking-widest bg-champagne text-obsidian font-semibold hover:bg-champagne-light transition-colors duration-200 shadow-md"
                   >
-                    <span>Explore High Jewelry</span>
+                    <span>Start Shopping</span>
                     <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>

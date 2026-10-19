@@ -166,17 +166,17 @@ export default function CheckoutPage() {
         </div>
         <div className="space-y-2">
           <h1 className="font-serif text-3xl text-alabaster font-light tracking-wide">
-            Your Velvet Box is Empty
+            Your Cart is Empty
           </h1>
           <p className="text-xs sm:text-sm text-neutral-400 max-w-md mx-auto leading-relaxed">
-            Please curate your desired solitaire rings, tennis bracelets, or bespoke pendants before proceeding to concierge checkout.
+            Please add your desired jewelry or watches to your cart before proceeding to checkout.
           </p>
         </div>
         <Link
           href="/shop"
           className="inline-flex items-center space-x-2 px-8 py-3.5 bg-champagne hover:bg-champagne-light text-obsidian text-xs uppercase tracking-widest font-semibold transition-all rounded-sm shadow-xl"
         >
-          <span>Explore High Jewelry Vault</span>
+          <span>Start Shopping</span>
           <ArrowRight className="w-4 h-4" />
         </Link>
       </div>
@@ -421,10 +421,10 @@ export default function CheckoutPage() {
           <div className="bg-neutral-950 border border-neutral-800 p-4 sm:p-8 rounded-sm space-y-5 sm:space-y-6">
             <div className="flex items-center justify-between border-b border-neutral-800 pb-4">
               <h2 className="font-serif text-xl text-alabaster font-medium tracking-wide">
-                Velvet Box Summary
+                Order Summary
               </h2>
               <span className="text-xs text-neutral-400 font-mono">
-                {items.length} {items.length === 1 ? "Piece" : "Pieces"}
+                {items.length} {items.length === 1 ? "Item" : "Items"}
               </span>
             </div>
 

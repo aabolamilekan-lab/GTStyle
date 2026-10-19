@@ -47,55 +47,46 @@ export default async function HomePage() {
   const bespokeSteps = [
     {
       step: "01",
-      icon: Sliders,
-      title: "Curate & Configure",
+      icon: Gem,
+      title: "Choose Your Design",
       description:
-        "Select your certified diamond or colored gemstone, choose your precious metal alloy (18K gold or platinum), and input custom ring dimensions.",
+        "Tell us what you want. Send a picture or choose from our collection.",
     },
     {
       step: "02",
       icon: CheckCircle,
-      title: "Place Order",
+      title: "Place Your Order",
       description:
-        "Provide your designated delivery address and mandatory required delivery date with custom atelier engraving specifications.",
+        "Give us your name, delivery address, and ring size if needed.",
     },
     {
       step: "03",
       icon: CreditCard,
-      title: "Direct Bank Transfer",
+      title: "Make Payment",
       description:
-        "Settle payment securely via direct transfer to the GTStyle official corporate bank account with zero payment gateway processing surcharges.",
+        "Pay into our official business account. No extra charges.",
     },
     {
       step: "04",
       icon: Truck,
-      title: "Verification & Armored Transit",
+      title: "We Make & Deliver",
       description:
-        "Exchange transfer confirmation directly with your atelier concierge via WhatsApp; master benchwork commences with insured nationwide armored dispatch.",
+        "Send payment proof on WhatsApp. We start making your piece and deliver to you anywhere in Nigeria.",
     },
   ];
 
   const testimonials = [
     {
       quote:
-        "Commissioning my fiancé's 2.50ct Sovereign Solitaire diamond ring through GTStyle was seamless. Settling via direct GTBank corporate transfer and confirming via WhatsApp gave complete peace of mind. The GIA documentation and micro-pavé finish are breathtaking.",
-      client: "Dr. Oladipo Adeleke",
-      location: "Ikoyi, Lagos",
-      piece: "The Sovereign Solitaire Ring (18K Yellow Gold)",
+        "I love my piece! Good quality and delivery was fast. Will buy again.",
+      client: "Amaka",
+      location: "Lagos",
     },
     {
       quote:
-        "The Celestia tennis bracelet has unmatched brilliance and fluidity. Within 48 hours of bank transfer confirmation, armored courier delivered the piece in a discreet tamper-proof case to my residence in Maitama. True haute joaillerie.",
-      client: "Amina Bello-Danladi",
-      location: "Maitama, Abuja",
-      piece: "The Celestia Diamond Tennis Bracelet (18K White Gold)",
-    },
-    {
-      quote:
-        "The Colombian emerald pendant in 18k gold is an absolute masterpiece. GTStyle's concierge team answered all my questions regarding clarity and certification over telephone in minutes. Zero card friction, just pure luxury service.",
-      client: "Tariq & Nnenna Al-Hassan",
-      location: "Victoria Island, Lagos",
-      piece: "The Emerald Cut Deco Pendant",
+        "Fine jewelry and looks expensive. I get compliments everywhere.",
+      client: "Tolu",
+      location: "Lagos",
     },
   ];
 
@@ -103,34 +94,35 @@ export default async function HomePage() {
     <div className="space-y-16 sm:space-y-24 lg:space-y-28 pb-16 sm:pb-24 overflow-hidden">
       {/* 1. Full-Viewport Hero Section */}
       <section className="min-h-[85vh] sm:min-h-[90vh] relative flex items-center justify-center overflow-hidden bg-obsidian px-3 sm:px-4 py-12">
-        {/* Background Macro Jewelry Imagery */}
+        {/* Background Editorial Lady Imagery */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=2000&q=85"
-            alt="GTStyle Haute Joaillerie Macro Photography"
+            src="/images/hero-lady.jpg"
+            alt="GTStyle Fine Jewelry Muse"
             fill
             priority
-            className="object-cover opacity-40 scale-100 animate-in fade-in zoom-in duration-1000"
+            className="object-cover object-[center_20%] sm:object-[center_25%] opacity-55 scale-100 filter brightness-90 contrast-105"
           />
-          {/* Obsidian Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/60 to-transparent" />
-          <div className="absolute inset-0 bg-radial-gradient from-transparent via-obsidian/40 to-obsidian" />
+          {/* Obsidian Gradient Overlays for seamless blending and crystal-clear text readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/70 to-obsidian/40" />
+          <div className="absolute inset-0 bg-gradient-to-b from-obsidian/80 via-transparent to-obsidian/60" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_30%,_#0B0B0B_95%)]" />
         </div>
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-4xl mx-auto space-y-5 sm:space-y-6 text-center pt-6 sm:pt-8">
-          <div className="inline-flex items-center space-x-2 px-3 sm:px-4 py-1.5 rounded-full border border-champagne/40 bg-champagne/10 text-champagne text-[10px] sm:text-[11px] uppercase tracking-[0.25em] sm:tracking-[0.3em] font-sans backdrop-blur-md">
+          <div className="inline-flex items-center space-x-2 px-3 sm:px-4 py-1.5 rounded-full border border-champagne/40 bg-champagne/10 text-champagne text-[10px] sm:text-[11px] uppercase tracking-[0.25em] sm:tracking-[0.3em] font-sans backdrop-blur-md shadow-lg shadow-black/40">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>HAUTE JOAILLERIE • LAGOS ATELIER</span>
+            <span>Fine Jewelry • Lagos</span>
           </div>
 
-          <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-alabaster leading-[1.15] tracking-tight">
-            Crafted for <br />
-            <span className="italic font-normal text-champagne font-serif">Generations</span>
+          <h1 className="font-serif text-3xl min-[380px]:text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-alabaster leading-[1.15] tracking-tight drop-shadow-md">
+            Crafted to <br />
+            <span className="italic font-normal text-champagne font-serif">Last</span>
           </h1>
 
-          <p className="max-w-2xl mx-auto text-xs sm:text-base md:text-lg text-neutral-300 font-sans font-light leading-relaxed px-2">
-            Bespoke fine jewelry, certified natural diamonds, and heirloom precious metals hand-set to order in our Lagos atelier.
+          <p className="max-w-2xl mx-auto text-xs sm:text-base md:text-lg text-neutral-200 font-sans font-light leading-relaxed px-2 drop-shadow-sm">
+            Your Style, Your Jewelry — Made Just For You!
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-2 sm:pt-4">
@@ -138,7 +130,7 @@ export default async function HomePage() {
               href="/shop"
               className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-champagne hover:bg-champagne-light text-obsidian text-xs uppercase tracking-widest font-semibold transition-all duration-300 shadow-xl flex items-center justify-center space-x-2 group rounded-sm"
             >
-              <span>Explore High Jewelry</span>
+              <span>Shop Now</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Link>
 
@@ -149,13 +141,13 @@ export default async function HomePage() {
               className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 border border-neutral-700 hover:border-champagne bg-obsidian/60 hover:bg-neutral-900/80 text-alabaster hover:text-champagne text-xs uppercase tracking-widest font-medium transition-all duration-300 backdrop-blur-md flex items-center justify-center space-x-2.5 rounded-sm"
             >
               <MessageCircle className="w-4 h-4 text-emerald-400" />
-              <span>Direct Atelier Concierge</span>
+              <span>Chat on WhatsApp</span>
             </a>
           </div>
         </div>
       </section>
 
-      {/* 2. The GTStyle Bespoke Experience (4-Step Process) */}
+      {/* 2. How To Order (4-Step Process) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="border border-neutral-800 bg-neutral-950/60 p-5 sm:p-10 lg:p-16 space-y-8 sm:space-y-12 rounded-sm">
           <div className="text-center max-w-2xl mx-auto space-y-3">
@@ -163,14 +155,14 @@ export default async function HomePage() {
               Concierge Ordering
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl text-alabaster font-light">
-              The GTStyle Bespoke Experience
+              How To Order
             </h2>
             <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed font-sans">
               Acquiring fine jewelry should be personal, private, and pristine. We operate on a direct concierge model eliminating credit card surcharges and payment gateway bottlenecks.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {bespokeSteps.map((step, idx) => {
               const Icon = step.icon;
               return (
@@ -200,11 +192,8 @@ export default async function HomePage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-neutral-800 pb-6 gap-4">
           <div>
-            <span className="text-xs uppercase tracking-[0.25em] text-champagne font-sans">
-              Haute Joaillerie
-            </span>
-            <h2 className="font-serif text-3xl sm:text-4xl text-alabaster font-light mt-1">
-              Featured Masterpieces
+            <h2 className="font-serif text-3xl sm:text-4xl text-alabaster font-light">
+              Our Best Sellers
             </h2>
           </div>
           <Link
@@ -226,11 +215,8 @@ export default async function HomePage() {
       {/* 4. Curated Collections Showcase (Asymmetric 2-Column Grid) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="text-center space-y-2">
-          <span className="text-xs uppercase tracking-[0.25em] text-champagne font-sans">
-            Atelier Signatures
-          </span>
           <h2 className="font-serif text-3xl sm:text-4xl text-alabaster font-light">
-            Curated Collections
+            Watches & Jewelry Collection
           </h2>
         </div>
 
@@ -239,7 +225,7 @@ export default async function HomePage() {
             <Link
               key={col.id}
               href={`/shop?collection=${col.slug}`}
-              className="group relative h-[420px] sm:h-[480px] overflow-hidden border border-neutral-800 flex flex-col justify-end p-8 sm:p-12 transition-all duration-500"
+              className="group relative h-[380px] min-[480px]:h-[420px] sm:h-[480px] overflow-hidden border border-neutral-800 flex flex-col justify-end p-5 min-[480px]:p-8 sm:p-12 transition-all duration-500"
             >
               {col.bannerUrl && (
                 <Image
@@ -282,10 +268,10 @@ export default async function HomePage() {
                 <Award className="w-6 h-6 stroke-[1.2]" />
               </div>
               <h3 className="font-serif text-xl text-alabaster tracking-wide">
-                100% Solid Recycled Gold & Platinum
+                Quality Materials
               </h3>
               <p className="text-xs text-neutral-400 leading-relaxed font-sans">
-                We cast solely in ethically refined 18k solid yellow, white, and rose gold alloys as well as 950 platinum. Zero hollow shells, zero gold plating—every piece carries enduring intrinsic weight.
+                High-quality, skin-friendly materials that are made to shine and last.
               </p>
             </div>
 
@@ -294,10 +280,10 @@ export default async function HomePage() {
                 <Gem className="w-6 h-6 stroke-[1.2]" />
               </div>
               <h3 className="font-serif text-xl text-alabaster tracking-wide">
-                Conflict-Free Certified Gemstones
+                Your Style, Your Jewelry
               </h3>
               <p className="text-xs text-neutral-400 leading-relaxed font-sans">
-                Every natural diamond is Kimberley Process compliant and accompanied by an official GIA grading dossier. Lab-grown diamonds adhere to strict IGI optical specifications (VS1+, F+ Color, Ideal Cut).
+                Made Just For You!
               </p>
             </div>
 
@@ -306,28 +292,25 @@ export default async function HomePage() {
                 <Shield className="w-6 h-6 stroke-[1.2]" />
               </div>
               <h3 className="font-serif text-xl text-alabaster tracking-wide">
-                Master Jeweler Benchwork
+                Made With Care
               </h3>
               <p className="text-xs text-neutral-400 leading-relaxed font-sans">
-                Each bezel, prong, and micro-pavé scallop is set under 40x stereoscopic magnification in our private Lagos studio. Every creation is hand-polished to mirror luster before personal certification.
+                Each piece is carefully polished and checked before we deliver to you.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 6. Editorial Client Testimonials */}
+      {/* 6. Customer Reviews */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="text-center space-y-2">
-          <span className="text-xs uppercase tracking-[0.25em] text-champagne font-sans">
-            Client Reflections
-          </span>
           <h2 className="font-serif text-3xl sm:text-4xl text-alabaster font-light">
-            Words From Our Patrons
+            Reviews From Our Customers
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {testimonials.map((t, idx) => (
             <div
               key={idx}
@@ -343,9 +326,6 @@ export default async function HomePage() {
                 </h4>
                 <p className="text-[11px] text-champagne font-mono">
                   {t.location}
-                </p>
-                <p className="text-[10px] text-neutral-500 font-sans">
-                  Piece: {t.piece}
                 </p>
               </div>
             </div>

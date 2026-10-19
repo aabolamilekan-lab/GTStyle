@@ -26,37 +26,48 @@ async function main() {
   });
   console.log(`Admin account provisioned: ${adminUser.email} (Role: ${adminUser.role})`);
 
-  // 2. Seed Categories
-  const categoryRings = await prisma.category.upsert({
-    where: { slug: "rings-solitaires" },
-    update: {},
+  // 2. Seed Categories (WATCH, NECKLACE, BRACELET, RINGS)
+  const categoryWatches = await prisma.category.upsert({
+    where: { slug: "watches" },
+    update: { name: "Watches" },
     create: {
-      name: "Rings & Solitaires",
-      slug: "rings-solitaires",
-      description: "Iconic bespoke solitaires, halo rings, and hand-forged bridal bands crafted with certified ethical diamonds.",
-      imageUrl: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1200&q=85",
+      name: "Watches",
+      slug: "watches",
+      description: "Haute horlogerie timepieces set with certified diamonds and hand-finished precious metal cases.",
+      imageUrl: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=85",
+    },
+  });
+
+  const categoryNecklaces = await prisma.category.upsert({
+    where: { slug: "necklaces" },
+    update: { name: "Necklaces" },
+    create: {
+      name: "Necklaces",
+      slug: "necklaces",
+      description: "Statement gemstone medallions, emerald pendants, and architectural diamond centerpieces.",
+      imageUrl: "https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&w=1200&q=85",
     },
   });
 
   const categoryBracelets = await prisma.category.upsert({
-    where: { slug: "tennis-bracelets" },
-    update: {},
+    where: { slug: "bracelets" },
+    update: { name: "Bracelets" },
     create: {
-      name: "Tennis Bracelets & Bangles",
-      slug: "tennis-bracelets",
+      name: "Bracelets",
+      slug: "bracelets",
       description: "Seamless lines of matched brilliant diamonds and pavé bangles engineered for fluid wrist articulation.",
       imageUrl: "https://images.unsplash.com/photo-1611591475887-210196238b93?auto=format&fit=crop&w=1200&q=85",
     },
   });
 
-  const categoryPendants = await prisma.category.upsert({
-    where: { slug: "bespoke-pendants" },
-    update: {},
+  const categoryRings = await prisma.category.upsert({
+    where: { slug: "rings" },
+    update: { name: "Rings" },
     create: {
-      name: "Bespoke Pendants",
-      slug: "bespoke-pendants",
-      description: "Statement gemstone medallions, emerald pendants, and architectural diamond centerpieces.",
-      imageUrl: "https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&w=1200&q=85",
+      name: "Rings",
+      slug: "rings",
+      description: "Iconic bespoke solitaires, halo rings, and hand-forged bridal bands crafted with certified ethical diamonds.",
+      imageUrl: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1200&q=85",
     },
   });
   console.log("Categories seeded successfully.");
@@ -239,7 +250,7 @@ async function main() {
       isPublished: true,
       isFeatured: true,
       allowsCustomEngraving: false,
-      categoryId: categoryPendants.id,
+      categoryId: categoryNecklaces.id,
       collectionId: collectionSignature.id,
       specifications: {
         create: {
