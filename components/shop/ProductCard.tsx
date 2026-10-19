@@ -119,12 +119,12 @@ export function ProductCard({ product }: ProductCardProps) {
       </div>
 
       {/* Bottom Info Block */}
-      <div className="p-5 space-y-3 bg-neutral-950/80 border-t border-neutral-900">
+      <div className="p-4 sm:p-5 space-y-2.5 sm:space-y-3 bg-neutral-950/80 border-t border-neutral-900">
         <div>
-          <span className="text-[10px] uppercase tracking-widest text-neutral-500 font-sans block mb-1">
+          <span className="text-[9px] sm:text-[10px] uppercase tracking-widest text-neutral-500 font-sans block mb-1">
             {product.category.name}
           </span>
-          <h3 className="font-serif text-lg text-alabaster group-hover:text-champagne transition-colors duration-200 line-clamp-1 leading-snug">
+          <h3 className="font-serif text-base sm:text-lg text-alabaster group-hover:text-champagne transition-colors duration-200 line-clamp-1 leading-snug">
             {product.name}
           </h3>
         </div>

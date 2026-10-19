@@ -25,18 +25,18 @@ export function BankDetailsCard({ orderNumber }: BankDetailsCardProps) {
   };
 
   return (
-    <div className="border border-champagne/40 bg-neutral-950 p-6 sm:p-8 rounded-lg space-y-6 text-alabaster shadow-2xl">
+    <div className="border border-champagne/40 bg-neutral-950 p-4 sm:p-8 rounded-sm space-y-5 sm:space-y-6 text-alabaster shadow-2xl">
       {/* Header */}
-      <div className="flex items-start justify-between flex-wrap gap-4 border-b border-neutral-800 pb-5">
+      <div className="flex items-start justify-between flex-wrap gap-3 sm:gap-4 border-b border-neutral-800 pb-4 sm:pb-5">
         <div className="flex items-center space-x-3">
-          <div className="p-2.5 rounded-sm bg-champagne/10 border border-champagne/30 text-champagne">
-            <Building2 className="w-5 h-5" />
+          <div className="p-2 sm:p-2.5 rounded-sm bg-champagne/10 border border-champagne/30 text-champagne">
+            <Building2 className="w-4 h-4 sm:w-5 sm:h-5" />
           </div>
           <div>
-            <h3 className="font-serif text-xl sm:text-2xl text-alabaster tracking-wide font-medium">
+            <h3 className="font-serif text-lg sm:text-2xl text-alabaster tracking-wide font-medium">
               Official Atelier Bank Details
             </h3>
-            <p className="text-xs text-neutral-400 font-sans mt-0.5">
+            <p className="text-[11px] sm:text-xs text-neutral-400 font-sans mt-0.5">
               Direct Corporate Transfer • Guaranty Trust Bank
             </p>
           </div>

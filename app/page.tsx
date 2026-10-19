@@ -100,9 +100,9 @@ export default async function HomePage() {
   ];
 
   return (
-    <div className="space-y-28 pb-24 overflow-hidden">
+    <div className="space-y-16 sm:space-y-24 lg:space-y-28 pb-16 sm:pb-24 overflow-hidden">
       {/* 1. Full-Viewport Hero Section */}
-      <section className="min-h-[90vh] relative flex items-center justify-center overflow-hidden bg-obsidian px-4">
+      <section className="min-h-[85vh] sm:min-h-[90vh] relative flex items-center justify-center overflow-hidden bg-obsidian px-3 sm:px-4 py-12">
         {/* Background Macro Jewelry Imagery */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -118,25 +118,25 @@ export default async function HomePage() {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 max-w-4xl mx-auto space-y-6 text-center pt-8">
-          <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full border border-champagne/40 bg-champagne/10 text-champagne text-[11px] uppercase tracking-[0.3em] font-sans backdrop-blur-md">
+        <div className="relative z-10 max-w-4xl mx-auto space-y-5 sm:space-y-6 text-center pt-6 sm:pt-8">
+          <div className="inline-flex items-center space-x-2 px-3 sm:px-4 py-1.5 rounded-full border border-champagne/40 bg-champagne/10 text-champagne text-[10px] sm:text-[11px] uppercase tracking-[0.25em] sm:tracking-[0.3em] font-sans backdrop-blur-md">
             <Sparkles className="w-3.5 h-3.5" />
             <span>HAUTE JOAILLERIE • LAGOS ATELIER</span>
           </div>
 
-          <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-alabaster leading-tight tracking-tight">
+          <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-alabaster leading-[1.15] tracking-tight">
             Crafted for <br />
             <span className="italic font-normal text-champagne font-serif">Generations</span>
           </h1>
 
-          <p className="max-w-2xl mx-auto text-sm sm:text-base md:text-lg text-neutral-300 font-sans font-light leading-relaxed">
+          <p className="max-w-2xl mx-auto text-xs sm:text-base md:text-lg text-neutral-300 font-sans font-light leading-relaxed px-2">
             Bespoke fine jewelry, certified natural diamonds, and heirloom precious metals hand-set to order in our Lagos atelier.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-2 sm:pt-4">
             <Link
               href="/shop"
-              className="w-full sm:w-auto px-8 py-4 bg-champagne hover:bg-champagne-light text-obsidian text-xs uppercase tracking-widest font-semibold transition-all duration-300 shadow-xl flex items-center justify-center space-x-2 group"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-champagne hover:bg-champagne-light text-obsidian text-xs uppercase tracking-widest font-semibold transition-all duration-300 shadow-xl flex items-center justify-center space-x-2 group rounded-sm"
             >
               <span>Explore High Jewelry</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -146,7 +146,7 @@ export default async function HomePage() {
               href={`https://wa.me/${SELLER_CONFIG.whatsappNumber}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-8 py-4 border border-neutral-700 hover:border-champagne bg-obsidian/60 hover:bg-neutral-900/80 text-alabaster hover:text-champagne text-xs uppercase tracking-widest font-medium transition-all duration-300 backdrop-blur-md flex items-center justify-center space-x-2.5"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 border border-neutral-700 hover:border-champagne bg-obsidian/60 hover:bg-neutral-900/80 text-alabaster hover:text-champagne text-xs uppercase tracking-widest font-medium transition-all duration-300 backdrop-blur-md flex items-center justify-center space-x-2.5 rounded-sm"
             >
               <MessageCircle className="w-4 h-4 text-emerald-400" />
               <span>Direct Atelier Concierge</span>
@@ -157,7 +157,7 @@ export default async function HomePage() {
 
       {/* 2. The GTStyle Bespoke Experience (4-Step Process) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="border border-neutral-800 bg-neutral-950/60 p-8 sm:p-12 lg:p-16 space-y-12 rounded-sm">
+        <div className="border border-neutral-800 bg-neutral-950/60 p-5 sm:p-10 lg:p-16 space-y-8 sm:space-y-12 rounded-sm">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <span className="text-xs uppercase tracking-[0.25em] text-champagne font-sans">
               Concierge Ordering

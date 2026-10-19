@@ -418,7 +418,7 @@ export default function CheckoutPage() {
 
         {/* Right Column (5 cols): Order Review Summary */}
         <div className="lg:col-span-5 lg:sticky lg:top-28">
-          <div className="bg-neutral-950 border border-neutral-800 p-6 sm:p-8 rounded-sm space-y-6">
+          <div className="bg-neutral-950 border border-neutral-800 p-4 sm:p-8 rounded-sm space-y-5 sm:space-y-6">
             <div className="flex items-center justify-between border-b border-neutral-800 pb-4">
               <h2 className="font-serif text-xl text-alabaster font-medium tracking-wide">
                 Velvet Box Summary

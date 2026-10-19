@@ -72,7 +72,7 @@ export default async function OrderSuccessPage({ params }: OrderSuccessPageProps
       />
 
       {/* Order Overview Details Grid */}
-      <div className="bg-neutral-950 border border-neutral-800 p-6 sm:p-8 rounded-sm space-y-6">
+      <div className="bg-neutral-950 border border-neutral-800 p-4 sm:p-8 rounded-sm space-y-5 sm:space-y-6">
         <h2 className="font-serif text-xl text-alabaster font-medium tracking-wide border-b border-neutral-800 pb-3">
           Order & Delivery Dossier
         </h2>
@@ -150,7 +150,7 @@ export default async function OrderSuccessPage({ params }: OrderSuccessPageProps
       </div>
 
       {/* Itemized Order Breakdown Table */}
-      <div className="bg-neutral-950 border border-neutral-800 p-6 sm:p-8 rounded-sm space-y-6">
+      <div className="bg-neutral-950 border border-neutral-800 p-4 sm:p-8 rounded-sm space-y-5 sm:space-y-6">
         <h2 className="font-serif text-xl text-alabaster font-medium tracking-wide border-b border-neutral-800 pb-3">
           Reserved Creations
         </h2>

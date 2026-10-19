@@ -188,7 +188,7 @@ export function ProductConfigurator({ product, variants }: ProductConfiguratorPr
           </span>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+        <div className="grid grid-cols-1 min-[420px]:grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5">
           {availableMetals.map((metal) => {
             const isSelected = selectedMetal === metal;
             const swatch = METAL_SWATCH_MAP[metal] || {
@@ -202,7 +202,7 @@ export function ProductConfigurator({ product, variants }: ProductConfiguratorPr
                 key={metal}
                 type="button"
                 onClick={() => setSelectedMetal(metal)}
-                className={`flex items-center space-x-2.5 p-3 rounded-sm border text-left transition-all ${
+                className={`flex items-center space-x-2.5 p-2.5 sm:p-3 rounded-sm border text-left transition-all ${
                   isSelected
                     ? "bg-neutral-900 border-champagne text-champagne ring-1 ring-champagne/40 shadow-sm"
                     : "bg-neutral-950/60 border-neutral-800 text-neutral-300 hover:border-neutral-700"
@@ -222,9 +222,9 @@ export function ProductConfigurator({ product, variants }: ProductConfiguratorPr
       {/* 2. Ring Size Selector (if piece is a ring) */}
       {isRing && (
         <div className="space-y-3 pt-2">
-          <div className="flex items-center justify-between text-xs">
+          <div className="flex items-center justify-between text-xs flex-wrap gap-1">
             <span className="uppercase tracking-widest text-neutral-400 font-medium">
-              Select Finger Size (US Standard):
+              Select Finger Size (US):
             </span>
             <button
               type="button"
@@ -236,7 +236,7 @@ export function ProductConfigurator({ product, variants }: ProductConfiguratorPr
             </button>
           </div>
 
-          <div className="grid grid-cols-5 sm:grid-cols-7 gap-2">
+          <div className="grid grid-cols-4 min-[420px]:grid-cols-5 sm:grid-cols-7 gap-1.5 sm:gap-2">
             {ALL_STANDARD_RING_SIZES.map((size) => {
               const isSelected = Number(selectedRingSize) === size;
               const hasStock = sizesForCurrentMetal.has(size);
@@ -326,7 +326,7 @@ export function ProductConfigurator({ product, variants }: ProductConfiguratorPr
           type="button"
           onClick={handleAddToVelvetBox}
           disabled={isAdding}
-          className="w-full py-4 px-6 bg-champagne hover:bg-champagne-light text-obsidian font-semibold text-xs uppercase tracking-widest transition-all duration-300 shadow-xl flex items-center justify-center space-x-2.5 rounded-sm disabled:opacity-75"
+          className="w-full py-3.5 sm:py-4 px-4 sm:px-6 bg-champagne hover:bg-champagne-light text-obsidian font-semibold text-xs uppercase tracking-widest transition-all duration-300 shadow-xl flex items-center justify-center space-x-2.5 rounded-sm disabled:opacity-75"
         >
           <ShoppingBag className="w-4 h-4 stroke-[2]" />
           <span>{isAdding ? "Placing in Velvet Box..." : "Add to Velvet Box"}</span>
@@ -337,7 +337,7 @@ export function ProductConfigurator({ product, variants }: ProductConfiguratorPr
           href={whatsappInquiryUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full py-3.5 px-6 bg-neutral-950 hover:bg-neutral-900 border border-neutral-800 hover:border-emerald-500/60 text-alabaster text-xs uppercase tracking-widest font-medium transition-all duration-300 flex items-center justify-center space-x-2.5 rounded-sm"
+          className="w-full py-3 sm:py-3.5 px-4 sm:px-6 bg-neutral-950 hover:bg-neutral-900 border border-neutral-800 hover:border-emerald-500/60 text-alabaster text-xs uppercase tracking-widest font-medium transition-all duration-300 flex items-center justify-center space-x-2.5 rounded-sm"
         >
           <MessageCircle className="w-4 h-4 text-emerald-400" />
           <span>Inquire With Studio Concierge</span>
@@ -345,7 +345,7 @@ export function ProductConfigurator({ product, variants }: ProductConfiguratorPr
       </div>
 
       {/* Trust Bullet Callouts */}
-      <div className="grid grid-cols-2 gap-3 pt-2 text-[11px] text-neutral-400">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 pt-2 text-[11px] text-neutral-400">
         <div className="flex items-center space-x-2">
           <Check className="w-3.5 h-3.5 text-champagne flex-shrink-0" />
           <span>Zero-Gateway Direct Settlement</span>

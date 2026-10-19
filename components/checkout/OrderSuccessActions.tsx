@@ -46,25 +46,25 @@ export function OrderSuccessActions({
 
   return (
     <div className="space-y-4 pt-2">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
         {/* Primary WhatsApp Deep-link */}
         <a
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center space-x-2.5 py-4 px-6 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs uppercase tracking-widest transition-all rounded-sm shadow-xl"
+          className="flex items-center justify-center space-x-2.5 py-3.5 sm:py-4 px-4 sm:px-6 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs uppercase tracking-wider sm:tracking-widest transition-all rounded-sm shadow-xl text-center"
         >
-          <MessageCircle className="w-5 h-5 flex-shrink-0" />
+          <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
           <span>Confirm & Share Receipt on WhatsApp</span>
         </a>
 
         {/* Direct Telephone Call */}
         <a
           href={`tel:${SELLER_CONFIG.phone}`}
-          className="flex items-center justify-center space-x-2.5 py-4 px-6 bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 hover:border-champagne text-alabaster hover:text-champagne font-semibold text-xs uppercase tracking-widest transition-all rounded-sm shadow-md"
+          className="flex items-center justify-center space-x-2.5 py-3.5 sm:py-4 px-4 sm:px-6 bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 hover:border-champagne text-alabaster hover:text-champagne font-semibold text-xs uppercase tracking-wider sm:tracking-widest transition-all rounded-sm shadow-md text-center"
         >
           <Phone className="w-4 h-4 flex-shrink-0" />
-          <span>Call Atelier Concierge ({SELLER_CONFIG.phone})</span>
+          <span>Call Concierge ({SELLER_CONFIG.phone})</span>
         </a>
       </div>
 

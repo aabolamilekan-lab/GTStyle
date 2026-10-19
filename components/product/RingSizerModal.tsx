@@ -83,7 +83,7 @@ export function RingSizerModal({ isOpen, onClose }: RingSizerModalProps) {
               <button
                 type="button"
                 onClick={() => setActiveTab("table")}
-                className={`flex-1 py-3 px-4 text-center border-b-2 uppercase tracking-wider transition-all ${
+                className={`flex-1 py-2.5 sm:py-3 px-1.5 sm:px-4 text-center border-b-2 uppercase tracking-normal sm:tracking-wider text-[10px] sm:text-xs transition-all ${
                   activeTab === "table"
                     ? "border-champagne text-champagne font-semibold bg-neutral-900/50"
                     : "border-transparent text-neutral-400 hover:text-alabaster"
@@ -94,7 +94,7 @@ export function RingSizerModal({ isOpen, onClose }: RingSizerModalProps) {
               <button
                 type="button"
                 onClick={() => setActiveTab("guide")}
-                className={`flex-1 py-3 px-4 text-center border-b-2 uppercase tracking-wider transition-all ${
+                className={`flex-1 py-2.5 sm:py-3 px-1.5 sm:px-4 text-center border-b-2 uppercase tracking-normal sm:tracking-wider text-[10px] sm:text-xs transition-all ${
                   activeTab === "guide"
                     ? "border-champagne text-champagne font-semibold bg-neutral-900/50"
                     : "border-transparent text-neutral-400 hover:text-alabaster"
@@ -105,7 +105,7 @@ export function RingSizerModal({ isOpen, onClose }: RingSizerModalProps) {
               <button
                 type="button"
                 onClick={() => setActiveTab("resizing")}
-                className={`flex-1 py-3 px-4 text-center border-b-2 uppercase tracking-wider transition-all ${
+                className={`flex-1 py-2.5 sm:py-3 px-1.5 sm:px-4 text-center border-b-2 uppercase tracking-normal sm:tracking-wider text-[10px] sm:text-xs transition-all ${
                   activeTab === "resizing"
                     ? "border-champagne text-champagne font-semibold bg-neutral-900/50"
                     : "border-transparent text-neutral-400 hover:text-alabaster"
@@ -116,7 +116,7 @@ export function RingSizerModal({ isOpen, onClose }: RingSizerModalProps) {
             </div>
 
             {/* Content Area */}
-            <div className="flex-1 overflow-y-auto p-6 space-y-6 text-neutral-300">
+            <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-5 sm:space-y-6 text-neutral-300">
               {/* Tab 1: Conversion Table */}
               {activeTab === "table" && (
                 <div className="space-y-4">
