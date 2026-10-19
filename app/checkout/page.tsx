@@ -101,7 +101,7 @@ export default function CheckoutPage() {
     setErrorMessage(null);
 
     if (items.length === 0) {
-      setErrorMessage("Your velvet box is empty.");
+      setErrorMessage("Your cart is empty.");
       return;
     }
 
@@ -188,13 +188,13 @@ export default function CheckoutPage() {
       {/* Page Header */}
       <div className="space-y-2 border-b border-neutral-800 pb-6">
         <span className="text-xs uppercase tracking-[0.25em] text-champagne font-sans">
-          Zero-Gateway Atelier Settlement
+          Easy & Secure Ordering
         </span>
         <h1 className="font-serif text-3xl sm:text-4xl text-alabaster font-light tracking-tight">
-          Concierge Direct Checkout
+          Checkout
         </h1>
         <p className="text-xs text-neutral-400">
-          Complete your delivery details to lock in live vault inventory. No card credentials required.
+          Fill in your delivery details below. No card details needed.
         </p>
       </div>
 
@@ -214,7 +214,7 @@ export default function CheckoutPage() {
             <div className="space-y-4">
               <h2 className="font-serif text-lg text-alabaster tracking-wide font-medium flex items-center space-x-2">
                 <span className="font-mono text-champagne text-xs">01.</span>
-                <span>Client Information</span>
+                <span>Your Information</span>
               </h2>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -269,7 +269,7 @@ export default function CheckoutPage() {
             <div className="space-y-4 pt-4 border-t border-neutral-800/80">
               <h2 className="font-serif text-lg text-alabaster tracking-wide font-medium flex items-center space-x-2">
                 <span className="font-mono text-champagne text-xs">02.</span>
-                <span>Armored Delivery Address</span>
+                <span>Delivery Address</span>
               </h2>
 
               <div className="space-y-4">
@@ -343,12 +343,12 @@ export default function CheckoutPage() {
             <div className="space-y-4 pt-4 border-t border-neutral-800/80">
               <h2 className="font-serif text-lg text-alabaster tracking-wide font-medium flex items-center space-x-2">
                 <span className="font-mono text-champagne text-xs">03.</span>
-                <span>Mandatory Required Delivery Date</span>
+                <span>Delivery Date</span>
               </h2>
 
               <div className="space-y-2">
                 <label className="text-xs text-neutral-300 font-sans block">
-                  When do you need this delivered? (Minimum 24h lead time for bespoke sizing & vault release) *
+                  When do you want this delivered? (Minimum 24 hours lead time) *
                 </label>
                 <div className="relative">
                   <input
@@ -362,7 +362,7 @@ export default function CheckoutPage() {
                   />
                 </div>
                 <p className="text-[11px] text-neutral-500">
-                  Past dates and today&apos;s date are strictly restricted to safeguard master goldsmith benchwork quality.
+                  Please give us at least 24 hours to prepare your order.
                 </p>
               </div>
             </div>
@@ -370,7 +370,7 @@ export default function CheckoutPage() {
             {/* Section 4: Special Instructions */}
             <div className="space-y-2 pt-4 border-t border-neutral-800/80">
               <label className="text-xs uppercase tracking-wider text-neutral-400 font-sans block">
-                Special Instructions / Handwritten Gift Card Note (Optional)
+                Special Note or Gift Card Message (Optional)
               </label>
               <textarea
                 name="orderNotes"
@@ -378,7 +378,7 @@ export default function CheckoutPage() {
                 maxLength={500}
                 value={formData.orderNotes}
                 onChange={handleChange}
-                placeholder="Include custom handover instructions or words for an enclosed bespoke gold foil greeting card..."
+                placeholder="Write any note you want us to add to your order..."
                 className="w-full bg-neutral-900 border border-neutral-800 text-alabaster text-xs px-3.5 py-3 rounded-sm focus:outline-none focus:border-champagne"
               />
             </div>
@@ -387,10 +387,10 @@ export default function CheckoutPage() {
             <div className="p-5 bg-neutral-950 border border-champagne/40 rounded-sm space-y-2">
               <div className="flex items-center space-x-2 text-champagne font-semibold text-xs tracking-wider uppercase">
                 <ShieldCheck className="w-4 h-4 text-champagne" />
-                <span>Direct Atelier Settlement</span>
+                <span>Pay By Bank Transfer</span>
               </div>
               <p className="text-xs text-neutral-300 leading-relaxed">
-                No credit or debit card is charged on this website. Upon submitting your order, GTStyle official bank account details will be presented. Transfers are verified manually before benchwork and armored dispatch.
+                No card is charged on this website. When you submit your order, our official bank account details will appear. Make a transfer and chat with us on WhatsApp.
               </p>
             </div>
 
@@ -403,12 +403,12 @@ export default function CheckoutPage() {
               {isSubmitting ? (
                 <>
                   <Loader2 className="w-4 h-4 animate-spin" />
-                  <span>Securing Atelier Reservation...</span>
+                  <span>Placing Your Order...</span>
                 </>
               ) : (
                 <>
                   <Lock className="w-4 h-4" />
-                  <span>Submit Order & View Bank Details</span>
+                  <span>Place Order & View Bank Details</span>
                   <ArrowRight className="w-4 h-4" />
                 </>
               )}
@@ -477,13 +477,13 @@ export default function CheckoutPage() {
             {/* Financial Breakdown */}
             <div className="space-y-3 pt-4 border-t border-neutral-800 text-xs">
               <div className="flex justify-between text-neutral-400">
-                <span>Pieces Subtotal</span>
+                <span>Items Subtotal</span>
                 <span className="font-mono text-alabaster">{formatNaira(subtotalCents)}</span>
               </div>
 
               <div className="flex justify-between text-neutral-400">
-                <span>Insured Armored Courier</span>
-                <span className="text-emerald-400 font-medium">Complimentary (₦0)</span>
+                <span>Delivery Across Nigeria</span>
+                <span className="text-emerald-400 font-medium">Free (₦0)</span>
               </div>
 
               <div className="pt-3 border-t border-neutral-800 flex items-baseline justify-between">
@@ -500,11 +500,11 @@ export default function CheckoutPage() {
             <div className="p-3.5 bg-neutral-900/50 border border-neutral-800/80 rounded-sm space-y-2 text-[11px] text-neutral-400">
               <div className="flex items-center space-x-2 text-neutral-300">
                 <CheckCircle className="w-3.5 h-3.5 text-champagne flex-shrink-0" />
-                <span>GIA/IGI authenticity dossier dispatched with piece</span>
+                <span>Quality checked before delivery</span>
               </div>
               <div className="flex items-center space-x-2 text-neutral-300">
                 <CheckCircle className="w-3.5 h-3.5 text-champagne flex-shrink-0" />
-                <span>One-tap WhatsApp & phone outreach on confirmation</span>
+                <span>Direct WhatsApp and phone support anytime</span>
               </div>
             </div>
           </div>

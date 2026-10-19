@@ -9,7 +9,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   ...authConfig,
   providers: [
     Credentials({
-      name: "Atelier Credentials",
+      name: "Admin Credentials",
       credentials: {
         email: { label: "Email", type: "email" },
         password: { label: "Password", type: "password" },
@@ -39,7 +39,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
         return {
           id: user.id,
-          name: user.name || "Atelier Staff",
+          name: user.name || "Admin Staff",
           email: user.email,
           role: user.role,
         };

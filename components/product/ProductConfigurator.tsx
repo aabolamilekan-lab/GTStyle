@@ -44,14 +44,14 @@ interface ProductConfiguratorProps {
 const ALL_STANDARD_RING_SIZES = [4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0];
 
 const METAL_SWATCH_MAP: Record<string, { label: string; color: string; border: string }> = {
-  YELLOW_GOLD_18K: { label: "18K Yellow Gold", color: "#E6CA65", border: "border-[#AA8A2A]" },
-  YELLOW_GOLD_14K: { label: "14K Yellow Gold", color: "#DFBE53", border: "border-[#9E8224]" },
-  WHITE_GOLD_18K: { label: "18K White Gold", color: "#D9D9D9", border: "border-[#B8BAC0]" },
-  WHITE_GOLD_14K: { label: "14K White Gold", color: "#EAECEF", border: "border-[#C0C2C8]" },
-  ROSE_GOLD_18K: { label: "18K Rose Gold", color: "#E8A598", border: "border-[#B06E59]" },
-  ROSE_GOLD_14K: { label: "14K Rose Gold", color: "#E2A692", border: "border-[#B77764]" },
-  PLATINUM_950: { label: "Platinum 950", color: "#A8A8A8", border: "border-[#808791]" },
-  STERLING_SILVER_925: { label: "925 Silver", color: "#C4C8D0", border: "border-[#90949D]" },
+  YELLOW_GOLD_18K: { label: "Gold Finish", color: "#E6CA65", border: "border-[#AA8A2A]" },
+  YELLOW_GOLD_14K: { label: "Gold Finish", color: "#DFBE53", border: "border-[#9E8224]" },
+  WHITE_GOLD_18K: { label: "Silver / White Finish", color: "#D9D9D9", border: "border-[#B8BAC0]" },
+  WHITE_GOLD_14K: { label: "Silver / White Finish", color: "#EAECEF", border: "border-[#C0C2C8]" },
+  ROSE_GOLD_18K: { label: "Rose Gold Finish", color: "#E8A598", border: "border-[#B06E59]" },
+  ROSE_GOLD_14K: { label: "Rose Gold Finish", color: "#E2A692", border: "border-[#B77764]" },
+  PLATINUM_950: { label: "Silver Finish", color: "#A8A8A8", border: "border-[#808791]" },
+  STERLING_SILVER_925: { label: "Silver Finish", color: "#C4C8D0", border: "border-[#90949D]" },
 };
 
 export function ProductConfigurator({ product, variants }: ProductConfiguratorProps) {
@@ -174,7 +174,7 @@ export function ProductConfigurator({ product, variants }: ProductConfiguratorPr
           </span>
         </div>
         <p className="text-xs text-neutral-400">
-          Price includes Nigerian VAT, insured armored transport, and complimentary lifetime cleaning.
+          Price includes safe delivery anywhere in Nigeria.
         </p>
       </div>
 
@@ -182,7 +182,7 @@ export function ProductConfigurator({ product, variants }: ProductConfiguratorPr
       <div className="space-y-3">
         <div className="flex items-center justify-between text-xs">
           <span className="uppercase tracking-widest text-neutral-400 font-medium">
-            Precious Metal Alloy:
+            Color & Material:
           </span>
           <span className="text-champagne font-semibold">
             {formatMetalType(selectedMetal)}
@@ -225,7 +225,7 @@ export function ProductConfigurator({ product, variants }: ProductConfiguratorPr
         <div className="space-y-3 pt-2">
           <div className="flex items-center justify-between text-xs flex-wrap gap-1">
             <span className="uppercase tracking-widest text-neutral-400 font-medium">
-              Select Finger Size (US):
+              Select Ring Size (US):
             </span>
             <button
               type="button"
@@ -233,7 +233,7 @@ export function ProductConfigurator({ product, variants }: ProductConfiguratorPr
               className="inline-flex items-center space-x-1 text-champagne hover:text-champagne-light underline underline-offset-4 transition-colors"
             >
               <Ruler className="w-3.5 h-3.5" />
-              <span>Find Your GTStyle Size</span>
+              <span>Find Your Ring Size</span>
             </button>
           </div>
 
@@ -263,7 +263,7 @@ export function ProductConfigurator({ product, variants }: ProductConfiguratorPr
             })}
           </div>
           <p className="text-[11px] text-neutral-500">
-            Selected size: <strong className="text-neutral-300">US {selectedRingSize.toFixed(1)}</strong>. Free resizing within 30 days of delivery.
+            Selected size: <strong className="text-neutral-300">US {selectedRingSize.toFixed(1)}</strong>. Easy size exchange if it doesn&apos;t fit.
           </p>
         </div>
       )}
@@ -279,17 +279,17 @@ export function ProductConfigurator({ product, variants }: ProductConfiguratorPr
                 onChange={(e) => setIsEngravingActive(e.target.checked)}
                 className="w-4 h-4 rounded-sm accent-[#D4AF37] cursor-pointer"
               />
-              <span>Add Complimentary Laser Inscription</span>
+              <span>Add Free Custom Name or Date Engraving</span>
             </label>
             <span className="text-[10px] uppercase tracking-widest text-champagne font-mono">
-              Free Bespoke Service
+              Free Service
             </span>
           </div>
 
           {isEngravingActive && (
             <div className="p-4 bg-neutral-950 border border-neutral-800 rounded-sm space-y-3 animate-in fade-in slide-in-from-top-2 duration-200">
               <div className="flex items-center justify-between text-[11px] text-neutral-400">
-                <span>Inner Shank Inscription (Max 25 characters)</span>
+                <span>Your Custom Text (Max 25 characters)</span>
                 <span className="font-mono text-champagne">
                   {engravingText.length} / {product.maxEngravingLength || 25}
                 </span>
@@ -308,7 +308,7 @@ export function ProductConfigurator({ product, variants }: ProductConfiguratorPr
               {engravingText && (
                 <div className="p-3 bg-obsidian border border-champagne/30 rounded-sm text-center">
                   <span className="text-[10px] uppercase tracking-widest text-neutral-500 block mb-1">
-                    Atelier Laser Preview:
+                    Preview:
                   </span>
                   <p className="font-serif italic text-champagne text-lg tracking-wide">
                     “{engravingText}”
@@ -322,7 +322,7 @@ export function ProductConfigurator({ product, variants }: ProductConfiguratorPr
 
       {/* 4. Action Buttons */}
       <div className="space-y-3 pt-4 border-t border-neutral-800">
-        {/* Add to Velvet Box Primary CTA */}
+        {/* Add to Cart Primary CTA */}
         <button
           type="button"
           onClick={handleAddToVelvetBox}
@@ -330,10 +330,10 @@ export function ProductConfigurator({ product, variants }: ProductConfiguratorPr
           className="w-full py-3.5 sm:py-4 px-4 sm:px-6 bg-champagne hover:bg-champagne-light text-obsidian font-semibold text-xs uppercase tracking-widest transition-all duration-300 shadow-xl flex items-center justify-center space-x-2.5 rounded-sm disabled:opacity-75"
         >
           <ShoppingBag className="w-4 h-4 stroke-[2]" />
-          <span>{isAdding ? "Placing in Velvet Box..." : "Add to Velvet Box"}</span>
+          <span>{isAdding ? "Adding to Cart..." : "Add to Cart"}</span>
         </button>
 
-        {/* WhatsApp Direct Studio Inquiry */}
+        {/* WhatsApp Direct Inquiry */}
         <a
           href={whatsappInquiryUrl}
           target="_blank"
@@ -341,7 +341,7 @@ export function ProductConfigurator({ product, variants }: ProductConfiguratorPr
           className="w-full py-3 sm:py-3.5 px-4 sm:px-6 bg-neutral-950 hover:bg-neutral-900 border border-neutral-800 hover:border-emerald-500/60 text-alabaster text-xs uppercase tracking-widest font-medium transition-all duration-300 flex items-center justify-center space-x-2.5 rounded-sm"
         >
           <MessageCircle className="w-4 h-4 text-emerald-400" />
-          <span>Inquire With Studio Concierge</span>
+          <span>Ask Question on WhatsApp</span>
         </a>
       </div>
 
@@ -349,19 +349,19 @@ export function ProductConfigurator({ product, variants }: ProductConfiguratorPr
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 pt-2 text-[11px] text-neutral-400">
         <div className="flex items-center space-x-2">
           <Check className="w-3.5 h-3.5 text-champagne flex-shrink-0" />
-          <span>Zero-Gateway Direct Settlement</span>
+          <span>Easy bank transfer payment</span>
         </div>
         <div className="flex items-center space-x-2">
           <Check className="w-3.5 h-3.5 text-champagne flex-shrink-0" />
-          <span>GIA/IGI Laboratory Dossier</span>
+          <span>Tested quality pieces that last</span>
         </div>
         <div className="flex items-center space-x-2">
           <Check className="w-3.5 h-3.5 text-champagne flex-shrink-0" />
-          <span>Armored Delivery Nationwide</span>
+          <span>Fast delivery anywhere in Nigeria</span>
         </div>
         <div className="flex items-center space-x-2">
           <Check className="w-3.5 h-3.5 text-champagne flex-shrink-0" />
-          <span>Lifetime Ultrasonic Servicing</span>
+          <span>Friendly WhatsApp support</span>
         </div>
       </div>
 

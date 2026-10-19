@@ -32,7 +32,7 @@ export function OrderDossierControls({
   const [consignmentRef, setConsignmentRef] = useState("");
 
   const handleConfirmTransfer = async () => {
-    if (!confirm(`Confirm that bank transfer payment has been received for order ${orderNumber}? This will automatically deduct vault stock inventory.`)) {
+    if (!confirm(`Confirm that bank transfer payment has been received for order ${orderNumber}? This will automatically deduct stock inventory.`)) {
       return;
     }
 

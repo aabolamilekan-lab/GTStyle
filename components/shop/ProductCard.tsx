@@ -35,14 +35,14 @@ export interface ProductCardProps {
 }
 
 const METAL_SWATCH_COLORS: Record<string, { bg: string; label: string; border: string }> = {
-  YELLOW_GOLD_18K: { bg: "bg-[#D4AF37]", label: "18K Yellow Gold", border: "border-[#AA8A2A]" },
-  YELLOW_GOLD_14K: { bg: "bg-[#DFBE53]", label: "14K Yellow Gold", border: "border-[#9E8224]" },
-  WHITE_GOLD_18K: { bg: "bg-[#E6E8EC]", label: "18K White Gold", border: "border-[#B8BAC0]" },
-  WHITE_GOLD_14K: { bg: "bg-[#EAECEF]", label: "14K White Gold", border: "border-[#C0C2C8]" },
-  ROSE_GOLD_18K: { bg: "bg-[#DE9B85]", label: "18K Rose Gold", border: "border-[#B06E59]" },
-  ROSE_GOLD_14K: { bg: "bg-[#E2A692]", label: "14K Rose Gold", border: "border-[#B77764]" },
-  PLATINUM_950: { bg: "bg-[#CFD4DC]", label: "Platinum 950", border: "border-[#969DA8]" },
-  STERLING_SILVER_925: { bg: "bg-[#C4C8D0]", label: "925 Silver", border: "border-[#90949D]" },
+  YELLOW_GOLD_18K: { bg: "bg-[#D4AF37]", label: "Gold Finish", border: "border-[#AA8A2A]" },
+  YELLOW_GOLD_14K: { bg: "bg-[#DFBE53]", label: "Gold Finish", border: "border-[#9E8224]" },
+  WHITE_GOLD_18K: { bg: "bg-[#E6E8EC]", label: "Silver / White Finish", border: "border-[#B8BAC0]" },
+  WHITE_GOLD_14K: { bg: "bg-[#EAECEF]", label: "Silver / White Finish", border: "border-[#C0C2C8]" },
+  ROSE_GOLD_18K: { bg: "bg-[#DE9B85]", label: "Rose Gold Finish", border: "border-[#B06E59]" },
+  ROSE_GOLD_14K: { bg: "bg-[#E2A692]", label: "Rose Gold Finish", border: "border-[#B77764]" },
+  PLATINUM_950: { bg: "bg-[#CFD4DC]", label: "Silver Finish", border: "border-[#969DA8]" },
+  STERLING_SILVER_925: { bg: "bg-[#C4C8D0]", label: "Silver Finish", border: "border-[#90949D]" },
 };
 
 export function ProductCard({ product }: ProductCardProps) {
@@ -61,9 +61,7 @@ export function ProductCard({ product }: ProductCardProps) {
     ? Math.min(...product.variants.map((v) => v.priceCents))
     : product.basePriceCents;
 
-  const badgeText = product.specifications?.certificateAgency
-    ? `${product.specifications.certificateAgency} Certified`
-    : "Handcrafted to Order";
+  const badgeText = "Top Quality";
 
   return (
     <Link
@@ -147,7 +145,7 @@ export function ProductCard({ product }: ProductCardProps) {
           })}
           {availableMetals.length > 0 && (
             <span className="text-[10px] text-neutral-400 pl-1 font-sans">
-              {availableMetals.length > 1 ? `${availableMetals.length} Alloys` : formatMetalType(availableMetals[0])}
+              {availableMetals.length > 1 ? `${availableMetals.length} Colors` : formatMetalType(availableMetals[0])}
             </span>
           )}
         </div>
@@ -161,7 +159,7 @@ export function ProductCard({ product }: ProductCardProps) {
             </span>
           </span>
           <span className="text-[10px] uppercase tracking-widest text-neutral-500 group-hover:text-champagne transition-colors">
-            Configure →
+            View Item →
           </span>
         </div>
       </div>

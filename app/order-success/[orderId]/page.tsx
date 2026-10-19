@@ -45,18 +45,18 @@ export default async function OrderSuccessPage({ params }: OrderSuccessPageProps
 
         <div className="space-y-1.5">
           <span className="text-xs uppercase tracking-[0.3em] text-champagne font-sans">
-            Atelier Reservation Confirmed
+            Order Confirmed!
           </span>
           <h1 className="font-serif text-3xl sm:text-5xl text-alabaster font-light tracking-tight">
-            Your GTStyle Order Has Been Received
+            Thank You For Your Order
           </h1>
           <p className="font-mono text-sm sm:text-base text-neutral-400">
-            Order Reference: <strong className="text-champagne font-bold">{order.orderNumber}</strong>
+            Order Number: <strong className="text-champagne font-bold">{order.orderNumber}</strong>
           </p>
         </div>
 
         <p className="text-xs sm:text-sm text-neutral-400 max-w-xl mx-auto leading-relaxed">
-          Your pieces have been reserved in the vault. Please finalize payment via direct bank transfer below and connect with our studio concierge via WhatsApp to share your payment receipt.
+          Your order has been received. Please make payment to our bank account below and send proof on WhatsApp.
         </p>
       </div>
 
@@ -74,7 +74,7 @@ export default async function OrderSuccessPage({ params }: OrderSuccessPageProps
       {/* Order Overview Details Grid */}
       <div className="bg-neutral-950 border border-neutral-800 p-4 sm:p-8 rounded-sm space-y-5 sm:space-y-6">
         <h2 className="font-serif text-xl text-alabaster font-medium tracking-wide border-b border-neutral-800 pb-3">
-          Order & Delivery Dossier
+          Order & Delivery Details
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs">
@@ -209,8 +209,8 @@ export default async function OrderSuccessPage({ params }: OrderSuccessPageProps
           </div>
 
           <div className="flex justify-between text-neutral-400">
-            <span>Insured Armored Courier</span>
-            <span className="text-emerald-400 font-medium">Complimentary (₦0)</span>
+            <span>Delivery Across Nigeria</span>
+            <span className="text-emerald-400 font-medium">Free (₦0)</span>
           </div>
 
           <div className="pt-3 border-t border-neutral-800 flex items-baseline justify-between">
@@ -224,13 +224,13 @@ export default async function OrderSuccessPage({ params }: OrderSuccessPageProps
         </div>
       </div>
 
-      {/* Return to Atelier Link */}
+      {/* Return to Shop Link */}
       <div className="text-center pt-4">
         <Link
           href="/shop"
           className="inline-flex items-center space-x-2 text-xs uppercase tracking-widest text-neutral-400 hover:text-champagne transition-colors"
         >
-          <span>Continue Curating High Jewelry</span>
+          <span>Continue Shopping</span>
           <ArrowRight className="w-4 h-4" />
         </Link>
       </div>

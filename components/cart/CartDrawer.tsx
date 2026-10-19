@@ -206,16 +206,16 @@ export function CartDrawer() {
                   </span>
                 </div>
 
-                {/* Armored Courier Note */}
+                {/* Delivery Note */}
                 <div className="flex items-center space-x-2 text-[11px] text-neutral-400">
                   <ShieldCheck className="w-4 h-4 text-champagne flex-shrink-0" />
-                  <span>Complimentary Armored Courier across Nigeria</span>
+                  <span>Safe delivery anywhere in Nigeria</span>
                 </div>
 
                 {/* Direct Bank Transfer Notice Callout */}
                 <div className="p-3 bg-champagne/10 border border-champagne/30 rounded-sm text-xs text-neutral-300 leading-snug">
-                  <p className="font-medium text-champagne-light mb-0.5">Zero-Gateway Checkout</p>
-                  Payment is completed via direct bank transfer upon order placement. No card is charged on this website.
+                  <p className="font-medium text-champagne-light mb-0.5">Pay By Bank Transfer</p>
+                  You will make a simple bank transfer after checkout. No card needed.
                 </div>
 
                 {/* Checkout CTA */}
@@ -224,7 +224,7 @@ export function CartDrawer() {
                   onClick={closeCart}
                   className="w-full flex items-center justify-center space-x-2 py-3.5 px-4 bg-champagne hover:bg-champagne-light text-obsidian font-semibold text-xs uppercase tracking-widest transition-colors duration-200 shadow-lg rounded-sm"
                 >
-                  <span>Proceed to Concierge Checkout</span>
+                  <span>Proceed to Checkout</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>

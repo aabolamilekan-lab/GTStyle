@@ -27,17 +27,17 @@ export async function generateMetadata({
 
   if (!product || !product.isPublished) {
     return {
-      title: "Jewelry Piece Not Found | GTStyle Fine Jewelry",
+      title: "Jewelry Not Found | GTStyle Fashion Jewelry",
     };
   }
 
   const heroImage = product.images[0]?.url;
 
   return {
-    title: `${product.name} | GTStyle Fine Jewelry`,
+    title: `${product.name} | GTStyle Fashion Jewelry`,
     description: product.description.slice(0, 160),
     openGraph: {
-      title: `${product.name} | GTStyle Fine Jewelry`,
+      title: `${product.name} | GTStyle Fashion Jewelry`,
       description: product.description.slice(0, 160),
       images: heroImage ? [{ url: heroImage }] : [],
     },
@@ -76,7 +76,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
           className="inline-flex items-center space-x-1.5 hover:text-champagne transition-colors"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
-          <span>Atelier Vault</span>
+          <span>Shop</span>
         </Link>
         <span>/</span>
         <Link

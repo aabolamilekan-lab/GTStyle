@@ -236,7 +236,7 @@ export function ProductMatrixStudio({
       const result = await createProductWithVariants(payload);
 
       if (!result.success) {
-        setErrorMsg(result.error || "Failed to create piece in vault.");
+        setErrorMsg(result.error || "Failed to save product.");
         setIsSubmitting(false);
         return;
       }
@@ -258,26 +258,26 @@ export function ProductMatrixStudio({
         </div>
       )}
 
-      {/* 1. Core Piece Dossier */}
+      {/* 1. Core Product Details */}
       <div className="bg-neutral-950 border border-neutral-800 p-6 sm:p-8 rounded-sm space-y-6">
         <div className="flex items-center space-x-2.5 border-b border-neutral-800 pb-4">
           <Gem className="w-5 h-5 text-champagne" />
           <h2 className="font-serif text-xl text-alabaster font-medium tracking-wide">
-            01. Core Piece Dossier
+            01. Core Product Details
           </h2>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 text-xs">
           <div className="sm:col-span-2 space-y-1">
             <label className="uppercase tracking-wider text-neutral-400 block font-medium">
-              Piece Name *
+              Product Name *
             </label>
             <input
               type="text"
               required
               value={name}
               onChange={(e) => handleNameChange(e.target.value)}
-              placeholder="e.g. The Sovereign Solitaire Diamond Ring"
+              placeholder="e.g. Classic Gold Ring"
               className="w-full bg-neutral-900 border border-neutral-800 text-alabaster text-xs p-3 rounded-sm focus:outline-none focus:border-champagne"
             />
           </div>
@@ -352,20 +352,20 @@ export function ProductMatrixStudio({
               required
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="High jewelry narrative describing the aesthetic silhouette, prong execution, and ethical sourcing..."
+              placeholder="Simple description of the product style and shine..."
               className="w-full bg-neutral-900 border border-neutral-800 text-alabaster text-xs p-3 rounded-sm focus:outline-none focus:border-champagne"
             />
           </div>
 
           <div className="sm:col-span-2 space-y-1">
             <label className="uppercase tracking-wider text-neutral-400 block font-medium">
-              Atelier Storytelling HTML (Optional)
+              Product Story HTML (Optional)
             </label>
             <textarea
               rows={2}
               value={storyHtml}
               onChange={(e) => setStoryHtml(e.target.value)}
-              placeholder="<p>Forged under 40x microscopic magnification in our private Lagos studio...</p>"
+              placeholder="<p>Crafted to shine and look beautiful on you...</p>"
               className="w-full bg-neutral-900 border border-neutral-800 text-alabaster text-xs p-3 rounded-sm font-mono focus:outline-none focus:border-champagne"
             />
           </div>
@@ -518,7 +518,7 @@ export function ProductMatrixStudio({
           <div className="space-y-3 pt-4 border-t border-neutral-800">
             <div className="flex items-center justify-between text-xs text-neutral-400">
               <span className="uppercase tracking-wider">
-                Generated Matrix ({matrixRows.length} Distinct Vault Entries)
+                Generated Variants ({matrixRows.length} Items)
               </span>
               <span className="font-mono text-[11px] text-champagne">
                 Live Editable Grid
@@ -530,10 +530,10 @@ export function ProductMatrixStudio({
                 <thead className="bg-neutral-900 text-neutral-400 uppercase tracking-wider text-[10px] border-b border-neutral-800">
                   <tr>
                     <th className="py-2.5 px-3">SKU Identifier</th>
-                    <th className="py-2.5 px-3">Precious Alloy</th>
-                    <th className="py-2.5 px-3">Finger Size</th>
+                    <th className="py-2.5 px-3">Metal / Finish</th>
+                    <th className="py-2.5 px-3">Ring Size</th>
                     <th className="py-2.5 px-3">Price Point (₦)</th>
-                    <th className="py-2.5 px-3">Vault Stock</th>
+                    <th className="py-2.5 px-3">Stock Quantity</th>
                     <th className="py-2.5 px-3 text-right">Delete</th>
                   </tr>
                 </thead>
@@ -726,11 +726,11 @@ export function ProductMatrixStudio({
           {isSubmitting ? (
             <>
               <Loader2 className="w-4 h-4 animate-spin" />
-              <span>Forging Vault Entry...</span>
+              <span>Saving Product...</span>
             </>
           ) : (
             <>
-              <span>Save Piece to Masterpiece Vault</span>
+              <span>Save Product</span>
               <ArrowRight className="w-4 h-4" />
             </>
           )}

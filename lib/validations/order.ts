@@ -30,7 +30,7 @@ export const orderPlacementSchema = z.object({
     },
     {
       message:
-        "Required delivery date must be at least 24 hours in the future for bespoke benchwork",
+        "Delivery date must be at least 24 hours from today.",
     }
   ),
   orderNotes: z
@@ -46,7 +46,7 @@ export const orderPlacementSchema = z.object({
         engravingText: z.string().max(25).optional(),
       })
     )
-    .min(1, "Your velvet box cannot be empty"),
+    .min(1, "Your cart cannot be empty"),
 });
 
 export type OrderPlacementInput = z.infer<typeof orderPlacementSchema>;

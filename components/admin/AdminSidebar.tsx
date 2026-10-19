@@ -25,22 +25,22 @@ export function AdminSidebar() {
 
   const navItems = [
     {
-      label: "Command Dashboard",
+      label: "Dashboard",
       href: "/admin/dashboard",
       icon: LayoutDashboard,
     },
     {
-      label: "Order Intake & Benchwork",
+      label: "Orders",
       href: "/admin/orders",
       icon: ClipboardList,
     },
     {
-      label: "Masterpiece Vault",
+      label: "Products",
       href: "/admin/products",
       icon: Gem,
     },
     {
-      label: "New Creation Studio",
+      label: "Add Product",
       href: "/admin/products/new",
       icon: PlusCircle,
     },
@@ -134,10 +134,10 @@ export function AdminSidebar() {
           <div className="p-6 border-b border-neutral-800/80">
             <Link href="/admin/dashboard" className="block space-y-1">
               <span className="font-serif text-xl font-bold tracking-[0.2em] text-champagne block">
-                GTSTYLE ATELIER
+                GTSTYLE ADMIN
               </span>
               <span className="text-[9px] uppercase tracking-widest text-neutral-400 block">
-                Executive Management Suite
+                Management Console
               </span>
             </Link>
           </div>
@@ -178,7 +178,7 @@ export function AdminSidebar() {
           >
             <div className="flex items-center space-x-2.5">
               <ExternalLink className="w-4 h-4" />
-              <span>Public Showcase View</span>
+              <span>View Website</span>
             </div>
             <span className="text-[10px] text-neutral-500 uppercase">Live ↗</span>
           </Link>
@@ -189,7 +189,7 @@ export function AdminSidebar() {
             className="w-full flex items-center space-x-2.5 px-3.5 py-2.5 text-xs text-neutral-400 hover:text-red-400 hover:bg-neutral-900 rounded-sm transition-colors"
           >
             <LogOut className="w-4 h-4" />
-            <span>Exit Session (Sign Out)</span>
+            <span>Sign Out</span>
           </button>
         </div>
       </aside>

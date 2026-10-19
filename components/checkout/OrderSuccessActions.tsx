@@ -29,13 +29,13 @@ export function OrderSuccessActions({
   });
 
   const whatsappMessage = encodeURIComponent(
-    `Hello GTStyle Atelier,\n\n` +
-      `I just submitted an order on your website:\n` +
+    `Hello GTStyle,\n\n` +
+      `I just placed an order on your website:\n` +
       `• Order Number: ${orderNumber}\n` +
-      `• Customer Name: ${customerName}\n` +
+      `• Name: ${customerName}\n` +
       `• Total Amount: ₦${formattedAmount}\n` +
-      `• Required Delivery Date: ${formattedDate}\n\n` +
-      `I am reaching out to confirm the details and share my transfer payment receipt.`
+      `• Delivery Date: ${formattedDate}\n\n` +
+      `Here is my payment proof.`
   );
 
   const whatsappUrl = `https://wa.me/${SELLER_CONFIG.whatsappNumber}?text=${whatsappMessage}`;
@@ -55,7 +55,7 @@ export function OrderSuccessActions({
           className="flex items-center justify-center space-x-2.5 py-3.5 sm:py-4 px-4 sm:px-6 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs uppercase tracking-wider sm:tracking-widest transition-all rounded-sm shadow-xl text-center"
         >
           <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
-          <span>Confirm & Share Receipt on WhatsApp</span>
+          <span>Send Payment Proof on WhatsApp</span>
         </a>
 
         {/* Direct Telephone Call */}
@@ -64,7 +64,7 @@ export function OrderSuccessActions({
           className="flex items-center justify-center space-x-2.5 py-3.5 sm:py-4 px-4 sm:px-6 bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 hover:border-champagne text-alabaster hover:text-champagne font-semibold text-xs uppercase tracking-wider sm:tracking-widest transition-all rounded-sm shadow-md text-center"
         >
           <Phone className="w-4 h-4 flex-shrink-0" />
-          <span>Call Concierge ({SELLER_CONFIG.phone})</span>
+          <span>Call Us ({SELLER_CONFIG.phone})</span>
         </a>
       </div>
 
@@ -76,7 +76,7 @@ export function OrderSuccessActions({
           className="inline-flex items-center space-x-2 text-xs uppercase tracking-wider text-neutral-400 hover:text-champagne transition-colors py-2 px-4 rounded-sm border border-neutral-800 hover:border-neutral-700 bg-neutral-950/40"
         >
           <Printer className="w-4 h-4" />
-          <span>Print Official Order Receipt</span>
+          <span>Print Order Receipt</span>
         </button>
       </div>
     </div>

@@ -112,18 +112,18 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
 
   const products = serializeProducts(rawProducts);
 
-  const pageTitle = activeCategory?.name || activeCollection?.name || "High Jewelry Catalog";
+  const pageTitle = activeCategory?.name || activeCollection?.name || "Our Jewelry Collection";
   const pageSubtitle =
     activeCategory?.description ||
     activeCollection?.description ||
-    "Curate certified natural solitaires, seamless tennis ribbons, and bespoke gemstone pendants. Directly secured via concierge bank transfer with zero gateway friction.";
+    "Find beautiful rings, necklaces, bracelets, earrings, and watches that make you shine. Simple ordering and fast delivery anywhere in Nigeria.";
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
       {/* Header Banner */}
       <div className="text-center max-w-3xl mx-auto space-y-4">
         <span className="text-xs uppercase tracking-[0.25em] text-champagne font-sans">
-          GTStyle Fine Jewelry Digital Atelier
+          GTStyle Fashion Jewelry
         </span>
         <h1 className="font-serif text-3xl sm:text-5xl text-alabaster font-light tracking-tight">
           {pageTitle}

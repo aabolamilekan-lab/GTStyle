@@ -22,10 +22,10 @@ export default async function AdminProductsPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-neutral-800 pb-6">
         <div>
           <span className="text-xs uppercase tracking-[0.25em] text-champagne">
-            Vault Inventory
+            Product Catalog
           </span>
           <h1 className="font-serif text-3xl sm:text-4xl text-alabaster font-light tracking-wide mt-1">
-            Masterpiece Vault
+            Jewelry Products
           </h1>
         </div>
         <Link
@@ -33,7 +33,7 @@ export default async function AdminProductsPage() {
           className="inline-flex items-center space-x-2 px-5 py-2.5 bg-champagne hover:bg-champagne-light text-obsidian text-xs uppercase tracking-widest font-semibold rounded-sm transition-colors shadow-lg"
         >
           <PlusCircle className="w-4 h-4" />
-          <span>New Creation Studio</span>
+          <span>Add New Product</span>
         </Link>
       </div>
 
@@ -42,13 +42,13 @@ export default async function AdminProductsPage() {
           <table className="w-full text-left text-xs">
             <thead className="bg-neutral-900/80 text-neutral-400 uppercase tracking-wider text-[10px] border-b border-neutral-800">
               <tr>
-                <th className="py-3.5 px-4 font-medium text-champagne">Piece</th>
+                <th className="py-3.5 px-4 font-medium text-champagne">Item</th>
                 <th className="py-3.5 px-4 font-medium">Category</th>
                 <th className="py-3.5 px-4 font-medium">Base Price</th>
-                <th className="py-3.5 px-4 font-medium">Variants Configured</th>
-                <th className="py-3.5 px-4 font-medium">Total In Vault</th>
+                <th className="py-3.5 px-4 font-medium">Variants</th>
+                <th className="py-3.5 px-4 font-medium">Total Stock</th>
                 <th className="py-3.5 px-4 font-medium">Status</th>
-                <th className="py-3.5 px-4 font-medium text-right">Showcase</th>
+                <th className="py-3.5 px-4 font-medium text-right">View</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-neutral-900">

@@ -61,10 +61,10 @@ export function RingSizerModal({ isOpen, onClose }: RingSizerModalProps) {
                 </div>
                 <div>
                   <h3 id="ring-sizer-title" className="font-serif text-xl text-alabaster tracking-wide font-medium">
-                    Atelier Ring Sizer & Guide
+                    Ring Size Guide
                   </h3>
                   <p className="text-[11px] text-neutral-400 font-sans">
-                    Standard US & British Imperial Dimensions
+                    Simple measurements to help you pick the right size.
                   </p>
                 </div>
               </div>
@@ -89,7 +89,7 @@ export function RingSizerModal({ isOpen, onClose }: RingSizerModalProps) {
                     : "border-transparent text-neutral-400 hover:text-alabaster"
                 }`}
               >
-                Conversion Table
+                Size Chart
               </button>
               <button
                 type="button"
@@ -111,7 +111,7 @@ export function RingSizerModal({ isOpen, onClose }: RingSizerModalProps) {
                     : "border-transparent text-neutral-400 hover:text-alabaster"
                 }`}
               >
-                Resizing Policy
+                Size Exchange
               </button>
             </div>
 
@@ -121,7 +121,7 @@ export function RingSizerModal({ isOpen, onClose }: RingSizerModalProps) {
               {activeTab === "table" && (
                 <div className="space-y-4">
                   <p className="text-xs text-neutral-400 leading-relaxed">
-                    GTStyle sizes conform to official US standard jewelers&apos; mandrels. If your measurement falls between two sizes, we recommend selecting the larger size for comfort.
+                    GTStyle sizes follow standard US ring sizing. If you fall between two sizes, choose the larger size for extra comfort.
                   </p>
                   <div className="overflow-x-auto border border-neutral-800 rounded-sm">
                     <table className="w-full text-left text-xs">
@@ -156,7 +156,7 @@ export function RingSizerModal({ isOpen, onClose }: RingSizerModalProps) {
                       <span className="font-mono text-champagne font-bold text-base">Step 01</span>
                       <h4 className="font-serif text-sm text-alabaster font-medium">Wrap Strip of Paper</h4>
                       <p className="text-xs text-neutral-400 leading-relaxed">
-                        Wrap a non-stretchy strip of paper or string around the base of the designated finger.
+                        Wrap a strip of paper or string around the base of your finger.
                       </p>
                     </div>
 
@@ -164,15 +164,15 @@ export function RingSizerModal({ isOpen, onClose }: RingSizerModalProps) {
                       <span className="font-mono text-champagne font-bold text-base">Step 02</span>
                       <h4 className="font-serif text-sm text-alabaster font-medium">Mark Intersection</h4>
                       <p className="text-xs text-neutral-400 leading-relaxed">
-                        Mark where the paper overlaps comfortably over your knuckle. Ensure it slides smoothly.
+                        Mark where the paper overlaps comfortably around your finger.
                       </p>
                     </div>
 
                     <div className="p-4 bg-neutral-950 border border-neutral-800 rounded-sm space-y-2">
                       <span className="font-mono text-champagne font-bold text-base">Step 03</span>
-                      <h4 className="font-serif text-sm text-alabaster font-medium">Measure in Millimeters</h4>
+                      <h4 className="font-serif text-sm text-alabaster font-medium">Measure with a Ruler</h4>
                       <p className="text-xs text-neutral-400 leading-relaxed">
-                        Lay the paper flat against a ruler. Find the circumference in mm and map to the table.
+                        Lay the paper flat against a ruler to find your size in mm.
                       </p>
                     </div>
                   </div>
@@ -181,34 +181,31 @@ export function RingSizerModal({ isOpen, onClose }: RingSizerModalProps) {
                   <div className="p-4 bg-neutral-950 border border-champagne/30 rounded-sm flex items-start space-x-3">
                     <Thermometer className="w-5 h-5 text-champagne flex-shrink-0 mt-0.5" />
                     <div className="space-y-1 text-xs">
-                      <h5 className="font-semibold text-champagne-light">Atelier Temperature Guideline</h5>
+                      <h5 className="font-semibold text-champagne-light">Temperature Tip</h5>
                       <p className="text-neutral-400 leading-relaxed">
-                        Measure fingers in the afternoon at comfortable room temperature. Cold fingers are typically half a size smaller, while extreme heat or sodium intake can cause temporary swelling.
+                        Measure your fingers when warm. Cold fingers are usually a bit smaller.
                       </p>
                     </div>
                   </div>
                 </div>
               )}
 
-              {/* Tab 3: Atelier Resizing Policy */}
+              {/* Tab 3: Easy Ring Size Exchange */}
               {activeTab === "resizing" && (
                 <div className="space-y-5">
                   <div className="p-4 bg-champagne/10 border border-champagne/30 rounded-sm flex items-start space-x-3">
                     <ShieldCheck className="w-5 h-5 text-champagne flex-shrink-0 mt-0.5" />
                     <div className="space-y-1 text-xs">
-                      <h4 className="font-semibold text-champagne-light">30-Day Complimentary Bespoke Resizing</h4>
+                      <h4 className="font-semibold text-champagne-light">Easy Ring Size Exchange</h4>
                       <p className="text-neutral-300 leading-relaxed">
-                        Every solitaire ring crafted at GTStyle includes one complimentary sizing adjustment within 30 days of armored delivery. Our master goldsmiths handle the alteration in our private studio without altering structural prong integrity.
+                        Ordered the wrong size? Don&apos;t worry. We will exchange it for your correct size within 14 days of delivery.
                       </p>
                     </div>
                   </div>
 
                   <div className="space-y-3 text-xs text-neutral-400 leading-relaxed">
                     <p>
-                      <strong className="text-alabaster">Eternity Bands Notice:</strong> Unbroken full-eternity pavé bands (such as the Eternity Pavé Band) cannot be resized after casting due to the continuous diamond circumference. Please confirm sizing accurately or contact concierge for a complimentary plastic ring-gauge dispatch.
-                    </p>
-                    <p>
-                      <strong className="text-alabaster">Concierge Assistance:</strong> If ordering as a surprise proposal, reach out to your personal concierge via WhatsApp for sizing advice based on height, frame, or existing jewelry photos.
+                      <strong className="text-alabaster">Need Help?</strong> Chat with us on WhatsApp anytime. We are happy to help you find the right fit.
                     </p>
                   </div>
                 </div>

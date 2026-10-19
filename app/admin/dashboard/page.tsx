@@ -112,7 +112,7 @@ export default async function AdminDashboardPage() {
             Command Center
           </span>
           <h1 className="font-serif text-3xl sm:text-4xl text-alabaster font-light tracking-wide mt-1">
-            Atelier Executive Overview
+            Dashboard Overview
           </h1>
         </div>
         <div className="flex items-center space-x-3">
@@ -126,7 +126,7 @@ export default async function AdminDashboardPage() {
             href="/admin/products/new"
             className="px-4 py-2.5 bg-champagne hover:bg-champagne-light text-obsidian text-xs uppercase tracking-widest font-semibold rounded-sm transition-colors shadow-lg"
           >
-            + New Creation
+            + Add Product
           </Link>
         </div>
       </div>
@@ -164,7 +164,7 @@ export default async function AdminDashboardPage() {
         {/* Card 3: Realized Revenue */}
         <div className="p-6 bg-neutral-950 border border-neutral-800 rounded-sm space-y-3 relative overflow-hidden">
           <div className="flex items-center justify-between text-neutral-400 text-xs uppercase tracking-wider">
-            <span>Realized Atelier Revenue</span>
+            <span>Total Revenue</span>
             <TrendingUp className="w-4 h-4 text-champagne" />
           </div>
           <div className="font-serif text-2xl sm:text-3xl text-champagne font-bold tracking-tight">
@@ -194,7 +194,7 @@ export default async function AdminDashboardPage() {
       <div className="bg-neutral-950 border border-neutral-800 rounded-sm overflow-hidden space-y-4 p-6 sm:p-8">
         <div className="flex items-center justify-between border-b border-neutral-800 pb-4">
           <h2 className="font-serif text-xl text-alabaster font-medium tracking-wide">
-            Recent Atelier Commissions
+            Recent Orders
           </h2>
           <Link
             href="/admin/orders"

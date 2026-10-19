@@ -34,7 +34,7 @@ function LoginForm() {
       });
 
       if (res?.error) {
-        setErrorMessage("Invalid atelier credentials. Access denied.");
+        setErrorMessage("Invalid login credentials. Access denied.");
         setIsLoading(false);
         return;
       }
@@ -57,13 +57,13 @@ function LoginForm() {
         <div className="text-center space-y-2">
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-champagne/30 bg-champagne/10 text-champagne text-[10px] uppercase tracking-[0.25em] font-sans">
             <Shield className="w-3 h-3" />
-            <span>Administrative Vault Access</span>
+            <span>Admin Portal</span>
           </div>
           <h1 className="font-serif text-3xl font-light tracking-widest text-champagne pt-1">
-            GTSTYLE ATELIER
+            GTSTYLE ADMIN
           </h1>
           <p className="text-xs uppercase tracking-widest text-neutral-400 font-sans">
-            Operations & Benchwork Console
+            Management Console
           </p>
         </div>
 
@@ -79,7 +79,7 @@ function LoginForm() {
         <form onSubmit={handleSubmit} className="space-y-5">
           <div className="space-y-1.5">
             <label className="text-xs uppercase tracking-wider text-neutral-400 font-sans block">
-              Atelier Email Address
+              Admin Email Address
             </label>
             <div className="relative">
               <input
@@ -96,7 +96,7 @@ function LoginForm() {
 
           <div className="space-y-1.5">
             <label className="text-xs uppercase tracking-wider text-neutral-400 font-sans block">
-              Executive Passcode
+              Password
             </label>
             <div className="relative">
               <input
@@ -119,10 +119,10 @@ function LoginForm() {
             {isLoading ? (
               <>
                 <Loader2 className="w-4 h-4 animate-spin" />
-                <span>Authorizing Session...</span>
+                <span>Signing In...</span>
               </>
             ) : (
-              <span>Enter Management Suite</span>
+              <span>Sign In</span>
             )}
           </button>
         </form>
@@ -141,7 +141,7 @@ function LoginForm() {
             href="/"
             className="text-xs text-neutral-500 hover:text-champagne transition-colors uppercase tracking-widest"
           >
-            ← Return to Public Atelier
+            ← Return to Home
           </Link>
         </div>
       </div>

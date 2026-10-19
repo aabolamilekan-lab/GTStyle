@@ -27,15 +27,16 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "GTStyle Fine Jewelry | High Jewelry Atelier Lagos",
+  title: "GTStyle | Quality Fashion Jewelry in Lagos",
   description:
-    "Mobile-first luxury digital atelier. Curate bespoke solitaire rings, diamond tennis bracelets, and Art Deco pendants with direct concierge order fulfillment.",
+    "Affordable luxury jewelry in Lagos, Nigeria. Beautiful fashion rings, necklaces, bracelets, earrings, and watches that make you shine.",
   keywords: [
-    "Fine Jewelry Lagos",
-    "Bespoke Diamond Rings",
-    "GIA Certified Solitaires",
-    "Tennis Bracelets Nigeria",
-    "Luxury Jewelry Atelier",
+    "Fashion Jewelry Lagos",
+    "Affordable Jewelry Nigeria",
+    "Jewelry in Lagos",
+    "Rings Nigeria",
+    "Necklaces Lagos",
+    "Watches Nigeria",
   ],
 };
 

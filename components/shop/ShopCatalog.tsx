@@ -33,11 +33,11 @@ export function ShopCatalog({
 
             <div className="space-y-2 max-w-md">
               <h3 className="font-serif text-2xl text-alabaster font-light tracking-wide">
-                No matching creations found
+                No items found
               </h3>
               <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed font-sans">
-                No jewelry pieces match your active curation criteria in{" "}
-                {activeCategoryName ? `"${activeCategoryName}"` : "the atelier vault"}. Try broadening your price boundaries or alloy selection.
+                No items match your filters in{" "}
+                {activeCategoryName ? `"${activeCategoryName}"` : "our shop"}. Try changing your filters.
               </p>
             </div>
 

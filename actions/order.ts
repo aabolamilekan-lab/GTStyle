@@ -17,7 +17,7 @@ export async function submitConciergeOrder(rawInput: OrderPlacementInput) {
     });
 
     if (dbVariants.length !== validated.items.length) {
-      throw new Error("One or more selected jewelry pieces are no longer available in the atelier.");
+      throw new Error("One or more selected items are no longer available.");
     }
 
     // 3. Compute totals strictly in integer kobo
@@ -25,11 +25,11 @@ export async function submitConciergeOrder(rawInput: OrderPlacementInput) {
     const preparedItems = validated.items.map((item) => {
       const variant = dbVariants.find((v) => v.id === item.variantId);
       if (!variant) {
-        throw new Error("Selected jewelry variant was not found in the atelier inventory.");
+        throw new Error("Selected jewelry item was not found in our store.");
       }
 
       if (variant.stockQuantity < item.quantity) {
-        throw new Error(`Insufficient inventory for ${variant.product.name} (${variant.sku}).`);
+        throw new Error(`Sorry, this item is out of stock.`);
       }
 
       const itemTotal = variant.priceCents * item.quantity;
@@ -102,8 +102,8 @@ export async function submitConciergeOrder(rawInput: OrderPlacementInput) {
       orderNumber: order.orderNumber,
     };
   } catch (error: unknown) {
-    console.error("Error submitting concierge order:", error);
-    const message = error instanceof Error ? error.message : "Failed to place atelier order.";
+    console.error("Error submitting order:", error);
+    const message = error instanceof Error ? error.message : "Failed to place order. Please try again.";
     return {
       success: false,
       error: message,

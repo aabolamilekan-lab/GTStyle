@@ -34,10 +34,10 @@ export function BankDetailsCard({ orderNumber }: BankDetailsCardProps) {
           </div>
           <div>
             <h3 className="font-serif text-lg sm:text-2xl text-alabaster tracking-wide font-medium">
-              Official Atelier Bank Details
+              GTStyle Bank Account Details
             </h3>
             <p className="text-[11px] sm:text-xs text-neutral-400 font-sans mt-0.5">
-              Direct Corporate Transfer • Guaranty Trust Bank
+              Pay directly to our business account
             </p>
           </div>
         </div>
@@ -119,18 +119,18 @@ export function BankDetailsCard({ orderNumber }: BankDetailsCardProps) {
           <span>Mandatory Transfer Reference Instruction</span>
         </div>
         <p className="text-xs text-neutral-300 leading-relaxed">
-          Please input your official Order Number{" "}
+          Please put your Order Number{" "}
           <strong className="text-champagne font-mono font-bold px-1.5 py-0.5 bg-obsidian rounded-sm border border-champagne/40">
             {orderNumber}
           </strong>{" "}
-          into the <em>&quot;Payment Description / Reference / Narration&quot;</em> field on your mobile banking app.
-          This enables our accounting desk to reconcile your transfer and issue benchwork authorization immediately.
+          in the <em>&quot;Payment Description or Narration&quot;</em> on your banking app.
+          This helps us confirm your payment fast.
         </p>
       </div>
 
       <div className="flex items-center space-x-2 text-[11px] text-neutral-400 pt-1">
         <ShieldCheck className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-        <span>Official verified corporate account of GTStyle Luxury Atelier Ltd.</span>
+        <span>Official verified business account of GTStyle.</span>
       </div>
     </div>
   );

@@ -72,21 +72,21 @@ export function Navbar() {
                 GTSTYLE
               </span>
               <span className="text-[7.5px] sm:text-[9px] uppercase tracking-widest sm:tracking-extrawide text-neutral-400 font-sans mt-1">
-                FINE JEWELRY • LAGOS
+                FASHION JEWELRY • LAGOS
               </span>
             </Link>
           </div>
 
           {/* Right Navigation & Utilities */}
           <div className="flex items-center space-x-1 sm:space-x-3 md:space-x-4">
-            {/* WhatsApp Concierge */}
+            {/* WhatsApp Contact */}
             <a
               href={`https://wa.me/${SELLER_CONFIG.whatsappNumber}`}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Direct WhatsApp Concierge"
+              aria-label="Chat on WhatsApp"
               className="p-1.5 sm:p-2 text-neutral-400 hover:text-emerald-400 transition-colors duration-200"
-              title="Chat with Atelier Concierge"
+              title="Chat on WhatsApp"
             >
               <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" />
             </a>
@@ -94,9 +94,9 @@ export function Navbar() {
             {/* Direct Telephone */}
             <a
               href={`tel:${SELLER_CONFIG.phone}`}
-              aria-label="Call Atelier Directly"
+              aria-label="Call Us Directly"
               className="p-1.5 sm:p-2 text-neutral-400 hover:text-champagne transition-colors duration-200"
-              title="Direct Telephone Line"
+              title="Call Us Directly"
             >
               <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
             </a>
@@ -140,7 +140,7 @@ export function Navbar() {
                 </Link>
               ))}
               <div className="pt-3 flex flex-col sm:flex-row sm:items-center justify-between text-xs text-neutral-400 gap-1">
-                <span className="uppercase tracking-wider text-[11px]">Atelier Concierge:</span>
+                <span className="uppercase tracking-wider text-[11px]">Customer Support:</span>
                 <span className="text-champagne font-mono text-xs">{SELLER_CONFIG.phone}</span>
               </div>
             </div>

@@ -17,10 +17,10 @@ interface ShopFiltersProps {
 }
 
 const AVAILABLE_METALS: { label: string; value: MetalType; color: string }[] = [
-  { label: "18K Yellow Gold", value: MetalType.YELLOW_GOLD_18K, color: "#D4AF37" },
-  { label: "18K White Gold", value: MetalType.WHITE_GOLD_18K, color: "#E6E8EC" },
-  { label: "18K Rose Gold", value: MetalType.ROSE_GOLD_18K, color: "#DE9B85" },
-  { label: "Platinum 950", value: MetalType.PLATINUM_950, color: "#CFD4DC" },
+  { label: "Gold Finish", value: MetalType.YELLOW_GOLD_18K, color: "#D4AF37" },
+  { label: "Silver / White Finish", value: MetalType.WHITE_GOLD_18K, color: "#E6E8EC" },
+  { label: "Rose Gold Finish", value: MetalType.ROSE_GOLD_18K, color: "#DE9B85" },
+  { label: "Silver Finish", value: MetalType.PLATINUM_950, color: "#CFD4DC" },
 ];
 
 export function ShopFilters({ categories, totalResults }: ShopFiltersProps) {
@@ -87,7 +87,7 @@ export function ShopFilters({ categories, totalResults }: ShopFiltersProps) {
       <div className="flex items-center justify-between pb-4 border-b border-neutral-800">
         <div className="flex items-center space-x-2">
           <SlidersHorizontal className="w-4 h-4 text-champagne" />
-          <span className="font-serif text-lg tracking-wide">Filter Vault</span>
+          <span className="font-serif text-lg tracking-wide">Filter Products</span>
         </div>
         {hasActiveFilters && (
           <button
@@ -112,7 +112,7 @@ export function ShopFilters({ categories, totalResults }: ShopFiltersProps) {
           onChange={(e) => updateParam("sort", e.target.value)}
           className="w-full bg-neutral-900 border border-neutral-800 text-xs text-alabaster px-3 py-2.5 rounded-sm focus:outline-none focus:border-champagne"
         >
-          <option value="newest">Newest Atelier Additions</option>
+          <option value="newest">Newest Arrivals</option>
           <option value="price_asc">Price: Low to High</option>
           <option value="price_desc">Price: High to Low</option>
         </select>
@@ -121,7 +121,7 @@ export function ShopFilters({ categories, totalResults }: ShopFiltersProps) {
       {/* Categories Filter */}
       <div className="space-y-3">
         <span className="text-xs uppercase tracking-widest text-neutral-400 font-sans block">
-          Adornment Category
+          Category
         </span>
         <div className="flex flex-col space-y-1.5">
           <button
@@ -161,7 +161,7 @@ export function ShopFilters({ categories, totalResults }: ShopFiltersProps) {
       {/* Metal Alloy Filter */}
       <div className="space-y-3">
         <span className="text-xs uppercase tracking-widest text-neutral-400 font-sans block">
-          Precious Metal Alloy
+          Color & Material
         </span>
         <div className="flex flex-col space-y-2">
           {AVAILABLE_METALS.map((metal) => {
@@ -216,7 +216,7 @@ export function ShopFilters({ categories, totalResults }: ShopFiltersProps) {
               </label>
               <input
                 type="number"
-                placeholder="10,000,000"
+                placeholder="1,000,000"
                 value={maxPriceInput}
                 onChange={(e) => setMaxPriceInput(e.target.value)}
                 className="w-full bg-neutral-900 border border-neutral-800 text-alabaster text-xs px-2.5 py-2 rounded-sm focus:outline-none focus:border-champagne"
@@ -234,7 +234,7 @@ export function ShopFilters({ categories, totalResults }: ShopFiltersProps) {
 
       {/* Results Count Footer */}
       <div className="pt-4 border-t border-neutral-800 text-xs text-neutral-400 font-sans">
-        Showing <span className="text-champagne font-semibold">{totalResults}</span> curated creations
+        Showing <span className="text-champagne font-semibold">{totalResults}</span> jewelry items
       </div>
     </div>
   );
@@ -255,7 +255,7 @@ export function ShopFilters({ categories, totalResults }: ShopFiltersProps) {
         >
           <div className="flex items-center space-x-2">
             <SlidersHorizontal className="w-4 h-4 text-champagne" />
-            <span>Refine & Filter Vault ({totalResults} Pieces)</span>
+            <span>Filter Products ({totalResults} Items)</span>
           </div>
           <span className="text-champagne font-mono text-sm">{isMobileOpen ? "−" : "+"}</span>
         </button>

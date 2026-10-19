@@ -2,7 +2,7 @@ import React from "react";
 import { AdminSidebar } from "@/components/admin/AdminSidebar";
 
 export const metadata = {
-  title: "Atelier Operations Suite | GTStyle Fine Jewelry",
+  title: "Admin Suite | GTStyle Fashion Jewelry",
   robots: {
     index: false,
     follow: false,

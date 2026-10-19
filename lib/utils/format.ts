@@ -5,14 +5,14 @@ export function formatNaira(cents: number): string {
 
 export function formatMetalType(metalType: string): string {
   const map: Record<string, string> = {
-    YELLOW_GOLD_18K: "18K Yellow Gold",
-    YELLOW_GOLD_14K: "14K Yellow Gold",
-    WHITE_GOLD_18K: "18K White Gold",
-    WHITE_GOLD_14K: "14K White Gold",
-    ROSE_GOLD_18K: "18K Rose Gold",
-    ROSE_GOLD_14K: "14K Rose Gold",
-    PLATINUM_950: "Platinum 950",
-    STERLING_SILVER_925: "925 Sterling Silver",
+    YELLOW_GOLD_18K: "Gold Finish",
+    YELLOW_GOLD_14K: "Gold Finish",
+    WHITE_GOLD_18K: "Silver / White Finish",
+    WHITE_GOLD_14K: "Silver / White Finish",
+    ROSE_GOLD_18K: "Rose Gold Finish",
+    ROSE_GOLD_14K: "Rose Gold Finish",
+    PLATINUM_950: "Silver Finish",
+    STERLING_SILVER_925: "Silver Finish",
   };
 
   return map[metalType] || metalType.replace(/_/g, " ");

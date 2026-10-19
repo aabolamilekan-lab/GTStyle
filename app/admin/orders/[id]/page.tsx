@@ -60,8 +60,8 @@ export default async function OrderDossierPage({ params }: OrderDossierPageProps
 
   const whatsappMessage = encodeURIComponent(
     `Hello ${order.customerName},\n\n` +
-      `This is GTStyle Fine Jewelry Atelier regarding your commission #${order.orderNumber}.\n` +
-      `We are preparing your piece for delivery scheduled for ${formattedDeliveryDate}.`
+      `This is GTStyle regarding your order #${order.orderNumber}.\n` +
+      `We are preparing your jewelry for delivery scheduled for ${formattedDeliveryDate}.`
   );
   const whatsappUrl = `https://wa.me/${internationalPhone}?text=${whatsappMessage}`;
 
@@ -74,7 +74,7 @@ export default async function OrderDossierPage({ params }: OrderDossierPageProps
           className="inline-flex items-center space-x-2 text-xs uppercase tracking-widest text-neutral-400 hover:text-champagne transition-colors"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
-          <span>Return to Order Intake</span>
+          <span>Return to Orders</span>
         </Link>
         <span className="font-mono text-xs text-neutral-400">
           ID: {order.id}

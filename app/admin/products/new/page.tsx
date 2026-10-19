@@ -25,22 +25,22 @@ export default async function AdminNewProductPage() {
           className="inline-flex items-center space-x-2 text-xs uppercase tracking-widest text-neutral-400 hover:text-champagne transition-colors"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
-          <span>Return to Masterpiece Vault</span>
+          <span>Return to Products</span>
         </Link>
         <span className="text-[10px] uppercase tracking-wider text-champagne bg-neutral-900 border border-neutral-800 px-2 py-0.5 rounded-sm">
-          Atelier Foundry
+          Product Management
         </span>
       </div>
 
       <div className="space-y-2">
         <span className="text-xs uppercase tracking-[0.25em] text-champagne font-sans">
-          Bespoke Creation Studio
+          Product Creator
         </span>
         <h1 className="font-serif text-3xl sm:text-4xl text-alabaster font-light tracking-wide">
-          Forge New Vault Piece
+          Add New Product
         </h1>
         <p className="text-xs text-neutral-400 max-w-2xl leading-relaxed">
-          Configure piece parameters, generate the Cartesian variant matrix across precious metal alloys and ring dimensions, and register official GIA/IGI gemological dossiers.
+          Add a new product to your store, select available color finishes, ring sizes, and pricing.
         </p>
       </div>
 

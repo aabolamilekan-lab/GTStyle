@@ -85,7 +85,7 @@ export function Footer() {
                 GTSTYLE
               </span>
               <span className="block text-[8px] uppercase tracking-widest text-neutral-400 mt-0.5">
-                FINE JEWELRY • LAGOS
+                FASHION JEWELRY • LAGOS
               </span>
             </Link>
             <p className="text-xs text-neutral-400 leading-relaxed">
@@ -210,7 +210,7 @@ export function Footer() {
                   </button>
                 </div>
                 <span className="text-[10px] text-neutral-500 block">
-                  Strictly confidential. No spam or unsolicited promotions.
+                  We will not send you spam.
                 </span>
               </form>
             )}
@@ -221,9 +221,9 @@ export function Footer() {
       {/* Bottom Legal Bar */}
       <div className="border-t border-neutral-800/80 bg-neutral-950 py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-neutral-500 space-y-3 sm:space-y-0">
-          <p suppressHydrationWarning>© {new Date().getFullYear()} GTStyle Fine Jewelry Digital Atelier Ltd. All rights reserved.</p>
+          <p suppressHydrationWarning>© {new Date().getFullYear()} GTStyle Fashion Jewelry Ltd. All rights reserved.</p>
           <p className="text-center sm:text-right">
-            Handcrafted with GIA/IGI ethical standards • Direct Concierge Bank Settlement
+            Quality Fashion Jewelry • Easy Bank Transfer • Fast Delivery Across Nigeria
           </p>
         </div>
       </div>

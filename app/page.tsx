@@ -152,13 +152,13 @@ export default async function HomePage() {
         <div className="border border-neutral-800 bg-neutral-950/60 p-5 sm:p-10 lg:p-16 space-y-8 sm:space-y-12 rounded-sm">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <span className="text-xs uppercase tracking-[0.25em] text-champagne font-sans">
-              Concierge Ordering
+              Simple & Easy
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl text-alabaster font-light">
               How To Order
             </h2>
             <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed font-sans">
-              Acquiring fine jewelry should be personal, private, and pristine. We operate on a direct concierge model eliminating credit card surcharges and payment gateway bottlenecks.
+              Ordering is easy and fast. Follow our simple 4-step process below.
             </p>
           </div>
 
@@ -200,7 +200,7 @@ export default async function HomePage() {
             href="/shop"
             className="group inline-flex items-center space-x-2 text-xs uppercase tracking-widest text-neutral-400 hover:text-champagne transition-colors"
           >
-            <span>Explore Entire Catalog</span>
+            <span>See All Items</span>
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
@@ -241,7 +241,7 @@ export default async function HomePage() {
 
               <div className="relative z-10 space-y-3">
                 <span className="inline-block text-[10px] uppercase font-sans tracking-widest text-champagne bg-obsidian/85 px-2.5 py-1 border border-neutral-800">
-                  Featured Collection • {col._count.products} Pieces
+                  Popular Collection • {col._count.products} Items
                 </span>
                 <h3 className="font-serif text-3xl sm:text-4xl text-alabaster font-light group-hover:text-champagne transition-colors">
                   {col.name}
@@ -250,7 +250,7 @@ export default async function HomePage() {
                   {col.description}
                 </p>
                 <div className="pt-2 inline-flex items-center space-x-2 text-xs uppercase tracking-widest text-champagne group-hover:text-champagne-light">
-                  <span>Enter Collection Showroom</span>
+                  <span>View Collection</span>
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </div>
               </div>

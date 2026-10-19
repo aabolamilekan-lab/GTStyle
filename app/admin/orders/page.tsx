@@ -109,10 +109,10 @@ export default async function AdminOrdersPage({
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-neutral-800 pb-6">
         <div>
           <span className="text-xs uppercase tracking-[0.25em] text-champagne">
-            Atelier Management
+            Order Management
           </span>
           <h1 className="font-serif text-3xl sm:text-4xl text-alabaster font-light tracking-wide mt-1">
-            Order Intake & Benchwork
+            Customer Orders
           </h1>
         </div>
       </div>
