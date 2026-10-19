@@ -94,19 +94,21 @@ export default async function HomePage() {
     <div className="space-y-16 sm:space-y-24 lg:space-y-28 pb-16 sm:pb-24 overflow-hidden">
       {/* 1. Full-Viewport Hero Section */}
       <section className="min-h-[85vh] sm:min-h-[90vh] relative flex items-center justify-center overflow-hidden bg-obsidian px-3 sm:px-4 py-12">
-        {/* Background Editorial Lady Imagery */}
+        {/* Background Editorial Jewelry Imagery */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/hero-lady.jpg"
-            alt="GTStyle Fine Jewelry Muse"
+            src="/images/hero-earrings.jpg"
+            alt="GTStyle Fashion Jewelry Earrings"
             fill
             priority
-            className="object-cover object-[center_20%] sm:object-[center_25%] opacity-55 scale-100 filter brightness-90 contrast-105"
+            className="object-cover object-center opacity-65 scale-100 filter brightness-95 contrast-110"
           />
-          {/* Obsidian Gradient Overlays for seamless blending and crystal-clear text readability */}
-          <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/70 to-obsidian/40" />
-          <div className="absolute inset-0 bg-gradient-to-b from-obsidian/80 via-transparent to-obsidian/60" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_30%,_#0B0B0B_95%)]" />
+          {/* Obsidian & Velvet Gradient Overlays for luxury depth and crystal-clear text readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/60 to-obsidian/45" />
+          <div className="absolute inset-0 bg-gradient-to-b from-obsidian/75 via-transparent to-obsidian/70" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_20%,_#0B0B0B_88%)]" />
+          {/* Subtle champagne warmth */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-champagne/10 rounded-full blur-3xl pointer-events-none" />
         </div>
 
         {/* Hero Content */}
