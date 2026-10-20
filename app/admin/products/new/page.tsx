@@ -40,7 +40,7 @@ export default async function AdminNewProductPage() {
           Add New Product
         </h1>
         <p className="text-xs text-neutral-400 max-w-2xl leading-relaxed">
-          Add a new product to your store, select available color finishes, ring sizes, and pricing.
+          Upload product photos, set the price, select available colors, and publish to your shop.
         </p>
       </div>
 
