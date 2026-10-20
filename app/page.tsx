@@ -17,32 +17,64 @@ import prisma from "@/lib/prisma";
 import { SELLER_CONFIG } from "@/config/seller";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { serializeProducts } from "@/lib/utils/serialize";
+import { formatNaira } from "@/lib/utils/format";
 
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  // Query 4 featured products
+  // Query in-stock watches
+  const rawWatchProducts = await prisma.product.findMany({
+    where: {
+      isPublished: true,
+      category: { slug: "watches" },
+    },
+    include: {
+      images: { orderBy: { sortOrder: "asc" } },
+      variants: { where: { isActive: true } },
+      category: true,
+    },
+    orderBy: { createdAt: "desc" },
+  });
+
+  // Query in-stock jewelry (earrings, bracelets, necklaces, rings)
+  const rawJewelryProducts = await prisma.product.findMany({
+    where: {
+      isPublished: true,
+      category: { slug: { not: "watches" } },
+    },
+    include: {
+      images: { orderBy: { sortOrder: "asc" } },
+      variants: { where: { isActive: true } },
+      category: true,
+    },
+    orderBy: { createdAt: "desc" },
+  });
+
+  // Query products for best sellers showcase
   const rawFeaturedProducts = await prisma.product.findMany({
-    where: { isPublished: true, isFeatured: true },
+    where: { isPublished: true },
+    orderBy: [{ isFeatured: "desc" }, { createdAt: "desc" }],
     include: {
       images: { orderBy: { sortOrder: "asc" } },
       variants: { where: { isActive: true } },
       category: true,
       specifications: true,
     },
-    take: 4,
+    take: 8,
   });
 
   const featuredProducts = serializeProducts(rawFeaturedProducts);
+  const watchProducts = serializeProducts(rawWatchProducts);
+  const jewelryProducts = serializeProducts(rawJewelryProducts);
 
-  // Query featured collections
-  const featuredCollections = await prisma.collection.findMany({
-    where: { isFeatured: true },
-    include: {
-      _count: { select: { products: true } },
-    },
-    take: 2,
-  });
+  const watchTotalStock = rawWatchProducts.reduce(
+    (sum, p) => sum + p.variants.reduce((s, v) => s + v.stockQuantity, 0),
+    0
+  );
+  const jewelryTotalStock = rawJewelryProducts.reduce(
+    (sum, p) => sum + p.variants.reduce((s, v) => s + v.stockQuantity, 0),
+    0
+  );
 
   const bespokeSteps = [
     {
@@ -214,50 +246,204 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 4. Curated Collections Showcase (Asymmetric 2-Column Grid) */}
+      {/* 4. Watches & Jewelry Collection (Exact In-Stock Showcase) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="text-center space-y-2">
+          <span className="text-xs uppercase tracking-[0.25em] text-champagne font-sans font-semibold">
+            Ready In Stock
+          </span>
           <h2 className="font-serif text-3xl sm:text-4xl text-alabaster font-light">
             Watches & Jewelry Collection
           </h2>
+          <p className="text-xs text-neutral-400 max-w-md mx-auto">
+            See exactly what is available right now for quick delivery across Nigeria.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {featuredCollections.map((col) => (
-            <Link
-              key={col.id}
-              href={`/shop?collection=${col.slug}`}
-              className="group relative h-[380px] min-[480px]:h-[420px] sm:h-[480px] overflow-hidden border border-neutral-800 flex flex-col justify-end p-5 min-[480px]:p-8 sm:p-12 transition-all duration-500"
-            >
-              {col.bannerUrl && (
-                <Image
-                  src={col.bannerUrl}
-                  alt={col.name}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-80"
-                />
-              )}
-              {/* Gradients */}
-              <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/60 to-transparent" />
+          {/* Card 1: Watch Collection */}
+          <div className="group relative border border-neutral-800 bg-neutral-950 overflow-hidden flex flex-col justify-between p-6 sm:p-10 transition-all duration-500 rounded-sm">
+            {/* Background Image with Fallback */}
+            <div className="absolute inset-0 z-0">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={
+                  watchProducts[0]?.images[0]?.url ||
+                  "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=85"
+                }
+                alt="Watch Collection"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-30"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/90 to-obsidian/60" />
+            </div>
 
-              <div className="relative z-10 space-y-3">
-                <span className="inline-block text-[10px] uppercase font-sans tracking-widest text-champagne bg-obsidian/85 px-2.5 py-1 border border-neutral-800">
-                  Popular Collection • {col._count.products} Items
+            <div className="relative z-10 space-y-5">
+              <div>
+                <span className="inline-block text-[10px] uppercase font-sans tracking-widest text-champagne bg-obsidian/90 px-3 py-1 border border-neutral-800 font-semibold rounded-sm">
+                  Watch Collection • {watchProducts.length} {watchProducts.length === 1 ? "Item" : "Items"} in Stock ({watchTotalStock} Available)
                 </span>
-                <h3 className="font-serif text-3xl sm:text-4xl text-alabaster font-light group-hover:text-champagne transition-colors">
-                  {col.name}
+                <h3 className="font-serif text-2xl sm:text-3xl text-alabaster font-light group-hover:text-champagne transition-colors mt-2">
+                  Watch Collection
                 </h3>
-                <p className="text-xs sm:text-sm text-neutral-300 max-w-md leading-relaxed line-clamp-2">
-                  {col.description}
+                <p className="text-xs text-neutral-300 max-w-md leading-relaxed mt-1">
+                  Quality, stylish wristwatches to upgrade your daily look.
                 </p>
-                <div className="pt-2 inline-flex items-center space-x-2 text-xs uppercase tracking-widest text-champagne group-hover:text-champagne-light">
-                  <span>View Collection</span>
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </div>
+
+              {/* Exact In-Stock Items Breakdown */}
+              <div className="space-y-2 pt-2 border-t border-neutral-850">
+                <span className="text-[10px] uppercase tracking-wider text-neutral-400 font-medium block">
+                  Items ready in stock:
+                </span>
+                <div className="space-y-2">
+                  {watchProducts.length > 0 ? (
+                    watchProducts.map((p) => {
+                      const pStock = (p.variants || []).reduce(
+                        (s: number, v: { stockQuantity?: number }) => s + (v.stockQuantity || 0),
+                        0
+                      );
+                      return (
+                        <Link
+                          key={p.id}
+                          href={`/product/${p.slug}`}
+                          className="flex items-center justify-between p-3 bg-neutral-900/90 hover:bg-neutral-850 border border-neutral-800 rounded-sm text-xs transition-colors group/item"
+                        >
+                          <div className="flex items-center space-x-3 min-w-0">
+                            <div className="w-10 h-10 rounded-sm bg-neutral-950 overflow-hidden flex-shrink-0 border border-neutral-800">
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
+                              <img
+                                src={
+                                  p.images[0]?.url ||
+                                  "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=300&q=85"
+                                }
+                                alt={p.name}
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+                            <span className="text-alabaster font-medium truncate group-hover/item:text-champagne transition-colors">
+                              {p.name}
+                            </span>
+                          </div>
+                          <div className="flex items-center space-x-2.5 font-mono flex-shrink-0 pl-2">
+                            <span className="text-champagne font-semibold">
+                              {formatNaira(p.basePriceCents)}
+                            </span>
+                            <span className="text-[10px] text-emerald-400 bg-emerald-950/70 px-2 py-0.5 rounded-sm border border-emerald-800/40">
+                              {pStock} in stock
+                            </span>
+                          </div>
+                        </Link>
+                      );
+                    })
+                  ) : (
+                    <p className="text-xs text-neutral-500 italic">No watches currently in stock.</p>
+                  )}
                 </div>
               </div>
-            </Link>
-          ))}
+
+              <div className="pt-2">
+                <Link
+                  href="/shop?category=watches"
+                  className="inline-flex items-center space-x-2 text-xs uppercase tracking-widest text-champagne hover:text-champagne-light font-semibold group/link"
+                >
+                  <span>Shop Watches</span>
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 2: Jewelry Collection */}
+          <div className="group relative border border-neutral-800 bg-neutral-950 overflow-hidden flex flex-col justify-between p-6 sm:p-10 transition-all duration-500 rounded-sm">
+            {/* Background Image with Fallback */}
+            <div className="absolute inset-0 z-0">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={
+                  jewelryProducts[0]?.images[0]?.url ||
+                  "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1200&q=85"
+                }
+                alt="Jewelry Collection"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-30"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/90 to-obsidian/60" />
+            </div>
+
+            <div className="relative z-10 space-y-5">
+              <div>
+                <span className="inline-block text-[10px] uppercase font-sans tracking-widest text-champagne bg-obsidian/90 px-3 py-1 border border-neutral-800 font-semibold rounded-sm">
+                  Jewelry Collection • {jewelryProducts.length} {jewelryProducts.length === 1 ? "Item" : "Items"} in Stock ({jewelryTotalStock} Available)
+                </span>
+                <h3 className="font-serif text-2xl sm:text-3xl text-alabaster font-light group-hover:text-champagne transition-colors mt-2">
+                  Jewelry Collection
+                </h3>
+                <p className="text-xs text-neutral-300 max-w-md leading-relaxed mt-1">
+                  Lovely earrings, bracelets, and sparkling pieces for everyday shine.
+                </p>
+              </div>
+
+              {/* Exact In-Stock Items Breakdown */}
+              <div className="space-y-2 pt-2 border-t border-neutral-850">
+                <span className="text-[10px] uppercase tracking-wider text-neutral-400 font-medium block">
+                  Items ready in stock:
+                </span>
+                <div className="space-y-2">
+                  {jewelryProducts.length > 0 ? (
+                    jewelryProducts.slice(0, 4).map((p) => {
+                      const pStock = (p.variants || []).reduce(
+                        (s: number, v: { stockQuantity?: number }) => s + (v.stockQuantity || 0),
+                        0
+                      );
+                      return (
+                        <Link
+                          key={p.id}
+                          href={`/product/${p.slug}`}
+                          className="flex items-center justify-between p-3 bg-neutral-900/90 hover:bg-neutral-850 border border-neutral-800 rounded-sm text-xs transition-colors group/item"
+                        >
+                          <div className="flex items-center space-x-3 min-w-0">
+                            <div className="w-10 h-10 rounded-sm bg-neutral-950 overflow-hidden flex-shrink-0 border border-neutral-800">
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
+                              <img
+                                src={
+                                  p.images[0]?.url ||
+                                  "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=300&q=85"
+                                }
+                                alt={p.name}
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+                            <span className="text-alabaster font-medium truncate group-hover/item:text-champagne transition-colors">
+                              {p.name}
+                            </span>
+                          </div>
+                          <div className="flex items-center space-x-2.5 font-mono flex-shrink-0 pl-2">
+                            <span className="text-champagne font-semibold">
+                              {formatNaira(p.basePriceCents)}
+                            </span>
+                            <span className="text-[10px] text-emerald-400 bg-emerald-950/70 px-2 py-0.5 rounded-sm border border-emerald-800/40">
+                              {pStock} in stock
+                            </span>
+                          </div>
+                        </Link>
+                      );
+                    })
+                  ) : (
+                    <p className="text-xs text-neutral-500 italic">No jewelry currently in stock.</p>
+                  )}
+                </div>
+              </div>
+
+              <div className="pt-2">
+                <Link
+                  href="/shop"
+                  className="inline-flex items-center space-x-2 text-xs uppercase tracking-widest text-champagne hover:text-champagne-light font-semibold group/link"
+                >
+                  <span>Shop Jewelry</span>
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

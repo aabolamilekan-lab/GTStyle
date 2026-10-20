@@ -27,6 +27,7 @@ export function Navbar() {
     { label: "NECKLACE", href: "/shop?category=necklaces" },
     { label: "BRACELET", href: "/shop?category=bracelets" },
     { label: "RINGS", href: "/shop?category=rings" },
+    { label: "EARRINGS", href: "/shop?category=earrings" },
   ];
 
   // Automatically close mobile menu when pathname changes
@@ -52,7 +53,7 @@ export function Navbar() {
           </div>
 
           {/* Left Navigation (Desktop) */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-5 xl:space-x-7">
             {navLinks.map((link) => (
               <Link
                 key={link.label}
