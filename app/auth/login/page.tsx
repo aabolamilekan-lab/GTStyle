@@ -12,8 +12,8 @@ function LoginForm() {
   const errorParam = searchParams.get("error");
   const callbackUrl = searchParams.get("callbackUrl") || "/admin/dashboard";
 
-  const [email, setEmail] = useState("admin@gtstyle.com");
-  const [password, setPassword] = useState("Admin123!");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(
     errorParam === "UnauthorizedAccess"
@@ -85,10 +85,11 @@ function LoginForm() {
               <input
                 type="email"
                 required
+                autoComplete="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-neutral-900 border border-neutral-800 text-alabaster text-xs px-3.5 py-3 rounded-sm focus:outline-none focus:border-champagne pl-10"
-                placeholder="admin@gtstyle.com"
+                className="w-full bg-neutral-900 border border-neutral-800 text-alabaster text-xs px-3.5 py-3 rounded-sm focus:outline-none focus:border-champagne pl-10 placeholder:text-neutral-600"
+                placeholder="Enter your email address"
               />
               <Mail className="w-4 h-4 text-neutral-500 absolute left-3.5 top-3.5" />
             </div>
@@ -102,10 +103,11 @@ function LoginForm() {
               <input
                 type="password"
                 required
+                autoComplete="current-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-neutral-900 border border-neutral-800 text-alabaster text-xs px-3.5 py-3 rounded-sm focus:outline-none focus:border-champagne pl-10"
-                placeholder="••••••••••••"
+                className="w-full bg-neutral-900 border border-neutral-800 text-alabaster text-xs px-3.5 py-3 rounded-sm focus:outline-none focus:border-champagne pl-10 placeholder:text-neutral-600"
+                placeholder="Enter your password"
               />
               <Lock className="w-4 h-4 text-neutral-500 absolute left-3.5 top-3.5" />
             </div>
@@ -126,15 +128,6 @@ function LoginForm() {
             )}
           </button>
         </form>
-
-        {/* Seed Credentials Hint Box */}
-        <div className="p-3.5 bg-neutral-900/60 border border-neutral-800/80 rounded-sm space-y-1 text-[11px] text-neutral-400">
-          <span className="text-champagne font-semibold block uppercase tracking-wider text-[10px]">
-            Default Seed Credentials:
-          </span>
-          <p className="font-mono text-neutral-300">Email: admin@gtstyle.com</p>
-          <p className="font-mono text-neutral-300">Password: Admin123!</p>
-        </div>
 
         <div className="text-center pt-2">
           <Link

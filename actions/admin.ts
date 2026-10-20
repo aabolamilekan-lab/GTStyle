@@ -180,7 +180,156 @@ export async function createProductWithVariants(input: CreateProductInput) {
     console.error("Error creating product:", error);
     return {
       success: false,
-      error: error instanceof Error ? error.message : "Failed to create piece in vault.",
+      error: error instanceof Error ? error.message : "Failed to create product.",
+    };
+  }
+}
+
+/**
+ * Updates an existing product (Image, Price, Name, Description, Status)
+ */
+export interface UpdateProductInput {
+  name: string;
+  description: string;
+  basePriceNaira: number; // in Naira, will be stored in kobo
+  imageUrl: string;
+  altText?: string;
+  isPublished?: boolean;
+  syncVariantPrices?: boolean;
+}
+
+export async function updateProduct(productId: string, data: UpdateProductInput) {
+  try {
+    const basePriceCents = Math.round(data.basePriceNaira * 100);
+
+    const updated = await prisma.$transaction(async (tx) => {
+      // 1. Update basic product fields
+      const p = await tx.product.update({
+        where: { id: productId },
+        data: {
+          name: data.name,
+          description: data.description,
+          basePriceCents,
+          isPublished: data.isPublished !== undefined ? data.isPublished : true,
+        },
+      });
+
+      // 2. Update or create primary hero image
+      if (data.imageUrl && data.imageUrl.trim()) {
+        const existingHero =
+          (await tx.productImage.findFirst({
+            where: { productId, isHero: true },
+          })) ||
+          (await tx.productImage.findFirst({
+            where: { productId },
+            orderBy: { sortOrder: "asc" },
+          }));
+
+        if (existingHero) {
+          await tx.productImage.update({
+            where: { id: existingHero.id },
+            data: {
+              url: data.imageUrl.trim(),
+              altText: data.altText || data.name,
+              isHero: true,
+            },
+          });
+        } else {
+          await tx.productImage.create({
+            data: {
+              productId,
+              url: data.imageUrl.trim(),
+              altText: data.altText || data.name,
+              isHero: true,
+              sortOrder: 0,
+            },
+          });
+        }
+      }
+
+      // 3. Sync variant prices if requested
+      if (data.syncVariantPrices) {
+        await tx.productVariant.updateMany({
+          where: { productId },
+          data: {
+            priceCents: basePriceCents,
+          },
+        });
+      }
+
+      return p;
+    });
+
+    revalidatePath("/admin/products");
+    revalidatePath("/shop");
+    revalidatePath(`/product/${updated.slug}`);
+    revalidatePath("/");
+
+    return { success: true, message: "Product updated successfully." };
+  } catch (error: unknown) {
+    console.error("Error updating product:", error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "Failed to update product.",
+    };
+  }
+}
+
+/**
+ * Deletes a product or safely unlists it if referenced in existing customer orders
+ */
+export async function deleteProduct(productId: string) {
+  try {
+    // Check if any variant is referenced in order items
+    const orderItem = await prisma.orderItem.findFirst({
+      where: {
+        variant: {
+          productId,
+        },
+      },
+    });
+
+    if (orderItem) {
+      // Soft-delete / unlist to preserve customer order receipts
+      await prisma.product.update({
+        where: { id: productId },
+        data: { isPublished: false },
+      });
+
+      await prisma.productVariant.updateMany({
+        where: { productId },
+        data: { isActive: false },
+      });
+
+      revalidatePath("/admin/products");
+      revalidatePath("/shop");
+      revalidatePath("/");
+
+      return {
+        success: true,
+        unlisted: true,
+        message: "Product has past orders, so it was unlisted from the store to protect receipt records.",
+      };
+    }
+
+    // Hard delete (cascades to images, variants, specifications)
+    await prisma.product.delete({
+      where: { id: productId },
+    });
+
+    revalidatePath("/admin/products");
+    revalidatePath("/shop");
+    revalidatePath("/");
+
+    return {
+      success: true,
+      message: "Product deleted successfully.",
+    };
+  } catch (error: unknown) {
+    console.error("Error deleting product:", error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "Failed to delete product.",
     };
   }
 }
