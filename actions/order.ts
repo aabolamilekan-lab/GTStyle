@@ -89,6 +89,9 @@ export async function submitConciergeOrder(rawInput: OrderPlacementInput) {
           shippingCents,
           totalCents,
           status: "AWAITING_PAYMENT",
+          paymentProofUrl: validated.senderPaymentReference
+            ? `Paid by: ${validated.senderPaymentReference}`
+            : "Customer clicked I HAVE PAID",
           items: {
             create: preparedItems,
           },

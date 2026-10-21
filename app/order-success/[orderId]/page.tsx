@@ -45,18 +45,21 @@ export default async function OrderSuccessPage({ params }: OrderSuccessPageProps
 
         <div className="space-y-1.5">
           <span className="text-xs uppercase tracking-[0.3em] text-champagne font-sans">
-            Order Confirmed!
+            Payment Logged • Order Number Generated
           </span>
           <h1 className="font-serif text-3xl sm:text-5xl text-alabaster font-light tracking-tight">
             Thank You For Your Order
           </h1>
           <p className="font-mono text-sm sm:text-base text-neutral-400">
-            Order Number: <strong className="text-champagne font-bold">{order.orderNumber}</strong>
+            Your Official Order Number:{" "}
+            <strong className="text-champagne font-bold text-lg sm:text-xl">
+              {order.orderNumber}
+            </strong>
           </p>
         </div>
 
-        <p className="text-xs sm:text-sm text-neutral-400 max-w-xl mx-auto leading-relaxed">
-          Your order has been received. Please make payment to our bank account below and send proof on WhatsApp.
+        <p className="text-xs sm:text-sm text-neutral-300 max-w-xl mx-auto leading-relaxed">
+          Your payment has been logged and your order number is generated! Please click below to send your payment receipt on WhatsApp for instant order confirmation.
         </p>
       </div>
 

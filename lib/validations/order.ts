@@ -38,6 +38,11 @@ export const orderPlacementSchema = z.object({
     .trim()
     .max(500, "Notes cannot exceed 500 characters")
     .optional(),
+  senderPaymentReference: z
+    .string()
+    .trim()
+    .max(150, "Payment reference cannot exceed 150 characters")
+    .optional(),
   items: z
     .array(
       z.object({

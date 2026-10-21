@@ -30,12 +30,12 @@ export function OrderSuccessActions({
 
   const whatsappMessage = encodeURIComponent(
     `Hello GTStyle,\n\n` +
-      `I just placed an order on your website:\n` +
+      `I have made payment for my order:\n` +
       `• Order Number: ${orderNumber}\n` +
       `• Name: ${customerName}\n` +
       `• Total Amount: ₦${formattedAmount}\n` +
       `• Delivery Date: ${formattedDate}\n\n` +
-      `Here is my payment proof.`
+      `Here is my payment receipt screenshot.`
   );
 
   const whatsappUrl = `https://wa.me/${SELLER_CONFIG.whatsappNumber}?text=${whatsappMessage}`;
@@ -55,7 +55,7 @@ export function OrderSuccessActions({
           className="flex items-center justify-center space-x-2.5 py-3.5 sm:py-4 px-4 sm:px-6 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs uppercase tracking-wider sm:tracking-widest transition-all rounded-sm shadow-xl text-center"
         >
           <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
-          <span>Send Payment Proof on WhatsApp</span>
+          <span>Send Payment Receipt on WhatsApp</span>
         </a>
 
         {/* Direct Telephone Call */}

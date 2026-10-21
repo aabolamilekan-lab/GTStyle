@@ -3,12 +3,19 @@
 import React, { useState } from "react";
 import { Building2, Copy, Check, ShieldCheck, AlertCircle } from "lucide-react";
 import { SELLER_CONFIG } from "@/config/seller";
+import { formatNaira } from "@/lib/utils/format";
 
 interface BankDetailsCardProps {
-  orderNumber: string;
+  orderNumber?: string;
+  amountCents?: number;
+  isCheckoutStep?: boolean;
 }
 
-export function BankDetailsCard({ orderNumber }: BankDetailsCardProps) {
+export function BankDetailsCard({
+  orderNumber,
+  amountCents,
+  isCheckoutStep = false,
+}: BankDetailsCardProps) {
   const [copiedField, setCopiedField] = useState<string | null>(null);
 
   const copyToClipboard = (text: string, fieldName: string) => {
@@ -20,7 +27,12 @@ export function BankDetailsCard({ orderNumber }: BankDetailsCardProps) {
   };
 
   const handleCopyAll = () => {
-    const fullText = `GTStyle Official Bank Account Details:\nBank: ${SELLER_CONFIG.bankDetails.bankName}\nAccount Name: ${SELLER_CONFIG.bankDetails.accountName}\nAccount Number: ${SELLER_CONFIG.bankDetails.accountNumber}\nTransfer Reference/Narration: ${orderNumber}`;
+    const fullText = isCheckoutStep
+      ? `GTStyle Official Bank Account Details:\nBank: ${SELLER_CONFIG.bankDetails.bankName}\nAccount Name: ${SELLER_CONFIG.bankDetails.accountName}\nAccount Number: ${SELLER_CONFIG.bankDetails.accountNumber}${
+          amountCents ? `\nAmount: ${formatNaira(amountCents)}` : ""
+        }`
+      : `GTStyle Official Bank Account Details:\nBank: ${SELLER_CONFIG.bankDetails.bankName}\nAccount Name: ${SELLER_CONFIG.bankDetails.accountName}\nAccount Number: ${SELLER_CONFIG.bankDetails.accountNumber}\nTransfer Reference/Narration: ${orderNumber || ""}`;
+
     copyToClipboard(fullText, "all");
   };
 
@@ -37,7 +49,9 @@ export function BankDetailsCard({ orderNumber }: BankDetailsCardProps) {
               GTStyle Bank Account Details
             </h3>
             <p className="text-[11px] sm:text-xs text-neutral-400 font-sans mt-0.5">
-              Pay directly to our business account
+              {isCheckoutStep
+                ? "Transfer payment to this account, then click 'I HAVE PAID' below"
+                : "Official payment account for GTStyle Fine Jewelry"}
             </p>
           </div>
         </div>
@@ -112,21 +126,34 @@ export function BankDetailsCard({ orderNumber }: BankDetailsCardProps) {
         </div>
       </div>
 
-      {/* Mandatory Narration Notice */}
-      <div className="p-4 bg-champagne/10 border border-champagne/30 rounded-sm space-y-2">
-        <div className="flex items-center space-x-2 text-champagne text-xs font-semibold tracking-wide uppercase">
-          <AlertCircle className="w-4 h-4 flex-shrink-0" />
-          <span>Mandatory Transfer Reference Instruction</span>
+      {/* Instruction Note */}
+      {isCheckoutStep ? (
+        <div className="p-4 bg-champagne/10 border border-champagne/30 rounded-sm space-y-2">
+          <div className="flex items-center space-x-2 text-champagne text-xs font-semibold tracking-wide uppercase">
+            <AlertCircle className="w-4 h-4 flex-shrink-0" />
+            <span>How to complete your order</span>
+          </div>
+          <p className="text-xs text-neutral-300 leading-relaxed">
+            1. Transfer the total amount ({amountCents ? <strong className="text-champagne">{formatNaira(amountCents)}</strong> : "due"}) to our bank account above.<br />
+            2. After sending the payment from your banking app or USSD, click the <strong className="text-champagne">&quot;I HAVE PAID&quot;</strong> button below.<br />
+            3. Your unique <strong className="text-champagne">Order Number</strong> will be generated immediately for tracking and receipt exchange on WhatsApp.
+          </p>
         </div>
-        <p className="text-xs text-neutral-300 leading-relaxed">
-          Please put your Order Number{" "}
-          <strong className="text-champagne font-mono font-bold px-1.5 py-0.5 bg-obsidian rounded-sm border border-champagne/40">
-            {orderNumber}
-          </strong>{" "}
-          in the <em>&quot;Payment Description or Narration&quot;</em> on your banking app.
-          This helps us confirm your payment fast.
-        </p>
-      </div>
+      ) : orderNumber ? (
+        <div className="p-4 bg-champagne/10 border border-champagne/30 rounded-sm space-y-2">
+          <div className="flex items-center space-x-2 text-champagne text-xs font-semibold tracking-wide uppercase">
+            <AlertCircle className="w-4 h-4 flex-shrink-0" />
+            <span>Transfer Reference for Order #{orderNumber}</span>
+          </div>
+          <p className="text-xs text-neutral-300 leading-relaxed">
+            Payment submitted for Order{" "}
+            <strong className="text-champagne font-mono font-bold px-1.5 py-0.5 bg-obsidian rounded-sm border border-champagne/40">
+              {orderNumber}
+            </strong>
+            . Please send your payment screenshot on WhatsApp to finalize verification.
+          </p>
+        </div>
+      ) : null}
 
       <div className="flex items-center space-x-2 text-[11px] text-neutral-400 pt-1">
         <ShieldCheck className="w-4 h-4 text-emerald-400 flex-shrink-0" />
